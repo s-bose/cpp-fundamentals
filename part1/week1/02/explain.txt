@@ -14,7 +14,9 @@ identifiers together.
 The identifiers are defined in different source files by including the header file 
 using `#include` preprocessor directive.
 
+
 3. When a compiler creates a program, in what part of the construction process does 
+
 it use header files and in what part libraries?
 
 > Header files are used during the preprocessing phase of compilation when the
