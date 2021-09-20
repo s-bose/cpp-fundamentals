@@ -1,4 +1,30 @@
 Write a program initializing a size_t value field of a union 
 using bit-fields.
 
+> struct `mask_t` defines a set of fields and the number of bits
+they occupy in a size_t. The bit fields start from the lowest order
+bit "a" and then "b" holding the next 3 bits and so on.
+The most significant 2 bits are given by "k" (2 bits).
 
+In the union `bits_union` we create a `size_t` value and `mask_t` mask,
+both of which occupy the same memory space of `sizeof(size_t)`
+
+By initializing the bit fields in `mask` we populate the memory space
+of `value` as well.
+
+
+Explain why the first three characters of the displayed value are what they are.
+
+> The output is "c0ffeecafe" 
+
+Since the final bit-field "k" is 2 bits long and has the value of 3,
+it corresponds to binary 11, going like this:
+
+next 5 bits (j) = 0     // 11 00000
+next 4 bits (i) = 7     // 11 00000 0111
+next 4 bits (h) = 15    // 11 00000 0111 1111
+
+Grouping them in 4 we get the hexadecimal representation which is:
+1100 0000 1111 = c0f
+
+which explains how we get the first 3 characters.
