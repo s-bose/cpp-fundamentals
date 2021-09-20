@@ -1,0 +1,4 @@
+Write a program initializing a size_t value field of a union 
+using bit-fields.
+
+
