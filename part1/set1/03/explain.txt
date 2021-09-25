@@ -1,0 +1,67 @@
+Exercise 03:
+
+
+Describe whether the code snippets are valid.
+
+1. 
+int main()
+{}
+
+> Yes. Although an empty main function does not serve any practical purpose.
+
+
+2.
+int main(int argc, char *argv[], char *envp[])
+{}
+
+> Yes. But envp is not defined by the C++ standard and thus should be avoided.
+A global `extern char **environ` can be declared instead to use environment
+variables.
+
+
+3.
+int main(int argc, char *argv[])
+{
+    return;
+}
+
+> No. This causes compilation error. Although main function implicitly returns 0
+without any return statement, in the presence of a return statement an integer
+value must be returned.
+
+
+4. Is this a valid C++ expression, and is it true?
+sizeof('c') == 1
+
+> Unlike C, C++ does not treat chars as int. Char types have a size of 1 Byte.
+Hence the equality holds true.
+
+
+5. In main(int argc, char *argv[]) it is true that argv[argc] == 0.
+
+> “argc” is the number of command-line arguments, including the name of the executable.
+"argv" is the array of strings containing these command-line arguments with the name of the 
+program at index 0. Thus the last argument will be in argv[argc - 1]. 
+Since “argc” index does not exist, it outputs 0 when argv[argc] is accessed. 
+Hence, argv[argc] == 0 is true.
+
+
+6. To immediately end a program from deep inside its code exit(0) should be used.
+
+> Yes, exit(0) can be used to immediately exit out of a program execution, the integer 
+argument 0 signalling a successful exit.
+
+
+7. When defining an enum called Name start with enum Name, instead of using 
+typedef enum Name.
+
+> Yes. Enums dont need typedefs in C++. The enum name itself can be used instead.
+
+
+8. When writing argv[2][3] the resulting code evaluates index [2] before index [3].
+
+> Yes. index [2] evaluates first to the 3rd command-line-argument (including program name),
+then index[3] evaluates to the 4th character in thar argument string.
+
+
+

@@ -1,0 +1,50 @@
+Exercise 02:
+
+1. Difference between a declaration and a definition?
+
+> A declaration informs the compiler about the name and type of a variable 
+(arguments and their types in case of functions).
+
+A definition informs the compiler about all the information such as function body,
+class fields and methods instructing it to allocate memory space or create objects.
+
+
+2. What are header files used for?
+
+> Header files declare a group of interrelated classes, functions or variable
+identifiers together. 
+The identifiers are defined in different source files by including the header file 
+using `#include` preprocessor directive.
+
+
+3. When a compiler creates a program, in what part of the construction process does 
+
+it use header files and in what part libraries?
+
+> Header files are used during the preprocessing phase of compilation when the
+preprocessor replaces all `#include`s in the source file(s) with the content of the 
+header file.
+
+Libraries are used during the linking phase where the linker links all external 
+references to objects, classes, functions defined in the library code (ex: cout object
+from iostream library).
+
+
+4.  Is a library an object module?
+
+> No. Object file is the binary file generated after compilation containing references to
+functions or objects of external libraries or other object files.
+Related object files can be grouped together into uncompressed archives called libraries
+(eg. -libstdc++ standard library) which is used by the linker to link and resolve symbols
+in the object file(s) (and references among the object files themselves) to create the
+executable file.
+
+
+5. Why is an object files obtained after compiling a source containing int main() not an 
+executable program?
+
+> Such object files might have references to symbols defined in other source files or 
+libraries. The libraries for those headers need to be linked (and other object files if any)
+by the linker to resolve all the references until an executable can be formed.
+
+

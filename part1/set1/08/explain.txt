@@ -1,0 +1,5 @@
+Exercise 8:
+
+Replace a nibble with another using bit manipulation.
+
+
