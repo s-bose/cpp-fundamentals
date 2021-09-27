@@ -1,2 +1,0 @@
-explain.txt
-hello.cc
