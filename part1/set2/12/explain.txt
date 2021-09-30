@@ -1,0 +1,6 @@
+Exercise 12:
+
+Write a program reverse showing a prompt that reads an input line and displays
+it reversed in the next line.
+
+

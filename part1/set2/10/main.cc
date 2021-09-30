@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cctype>
+
 int main()
 {
     size_t a_size = 1 << 8;                       // total 2^8 ascii values
