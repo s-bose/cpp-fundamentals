@@ -1,0 +1,5 @@
+Exercise 14:
+
+Show all combinations of all command-line arguments (excluding program name).
+
+
