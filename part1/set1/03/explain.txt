@@ -44,8 +44,7 @@ reading.
 
 6. To immediately end a program from deep inside its code exit(0) should be used.
 
-> Yes, exit(0) can be used to immediately exit out of a program execution, the integer 
-argument 0 signalling a successful exit.
+> No. exit(0) is deprecated and should not be used to exit out of a program execution. 
 
 
 7. When defining an enum called Name start with enum Name, instead of using 
