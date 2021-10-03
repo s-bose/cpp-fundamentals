@@ -1,0 +1,5 @@
+Exercise 16:
+
+Display numbers from all number systems from binary (base 2) to
+base 36 (10 digits plus 26 alphabets).
+

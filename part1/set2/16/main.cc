@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 
     while (num)
     {
-        size_t digit = num % radix;  // extract LSB in base radix
+        size_t digit = num % radix;  // extract LSB in radix base
         num = num / radix;
                                      // produce alphabets for digits > 9 
         digit = digit > 9 ? ('a' + (digit - 10)) : digit;

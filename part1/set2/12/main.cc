@@ -5,19 +5,15 @@ int main()
 {
     while (true)
     {
-        std::cout << "? ";
+        std::cout << "? "; // input prompt
 
         std::string line;
+
+                    // break if line empty or EOF
         if (not std::getline(std::cin, line) or line.empty())
             break;
-        for
-        (
-            std::string::reverse_iterator revIt = line.rbegin();
-            revIt != line.rend();
-            ++revIt
-        )
-            std::cout << *revIt;
-        
-        std::cout << '\n';
+
+                    // print the line by iterating in reverse
+        std::cout << std::string(line.rbegin(), line.rend()) << '\n';
     }
 }
