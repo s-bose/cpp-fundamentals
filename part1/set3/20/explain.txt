@@ -1,0 +1,9 @@
+Exercise 20:
+
+Implement the quicksort sorting function to sort environment variables 
+in the form of strings stored in an array.
+
+In our previous Implementation, the compare function had value parameters
+which was unnecessary.
+In addition, header file and internal headers are configured properly.
+

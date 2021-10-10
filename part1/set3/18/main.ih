@@ -1,0 +1,17 @@
+#include <iostream>
+#include <string>
+
+
+struct ReturnValues
+{
+    bool ok;
+    size_t nr;
+    std::string value;
+};
+
+ReturnValues combine(int argc, char *argv[]);
+
+bool structCall(int argc, char *argv[]);
+void boundCall(int argc, char *argv[]);
+
+void usage(std::string progName);

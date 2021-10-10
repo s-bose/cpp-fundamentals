@@ -1,0 +1,206 @@
+Exercise 21:
+
+Learn to distinguish various return and parameter types in a function.
+
+In what situation is it appropriate to:
+1. define an int-type parameter?
+ > It is appropriate to use an int-type parameter when the function wants
+ to to numerical operations on a copy of the value of the parameter.
+
+ In the following code this is illustrated because the square function
+ does not change the original value but rather use it to compute square.
+
+ int square(int num)
+ {
+     return num * num;
+ }
+
+2. define a std::string value parameter?
+ > It is appropriate to use a std::string value parameter when the function
+ needs to modify the string object but does not want to make the changes 
+ visible to the caller.
+
+ In the following code this is illustrated because reverse reverses a copy 
+ of string while the original string stays intact.
+
+ string reverse(string str); // value type
+
+ string hello = "hello world";
+ cout << reverse(hello);     // hello = "hello world"
+
+3. define a const reference to an int-type parameter?
+ > Const reference for a value type (int) is unnecessary since by-value
+ parameter passing is more efficient.
+
+4. define a const reference to a std::string value parameter?
+ > It is appropriate when the function needs to operate on the original 
+ string without modifying it and by-value copy is inefficient due to size.
+
+ In the following code, length() function computes the length of a
+ (supposedly) large string.
+
+ size_t length(string const &str);
+
+5. define a non-const reference to an int-type parameter?
+ > It is appropriate when the function modifies the external variable from
+ inside.
+
+ In the following code, the function increments the caller's count value.
+
+ int resourceIncr(int &res);
+
+ int count = 1;
+ resourceIncr(res); // res = 2
+
+6. define a non-const reference to a std::string value parameter?
+ > It is appropriate when the function wants to modify the external object
+ from the inside.
+
+ In the following code, the function sorts the chars in the string reference.
+
+ void sortStr(string &str);
+
+ string name = "abc";
+ sort_str(name); // name = "cba"
+
+7. define a const rvalue-reference to an int-type parameter?
+ > rvalue reference parameter is not required since a const value-type 
+ parameter can copy the rvalues from function returns/expressions more 
+ efficiently.
+
+8. define a const rvalue-reference to a std::string parameter?
+ > This is appropriate when the function expects to steal the passed
+ temporary object's data but not modify it.
+
+ In this example, function decrypt receives a temporary string from a
+ function and computes its length.
+
+ size_t getSize(string const &&email)
+ {
+     return email.length();
+ }
+
+ getSize(getEmail());
+
+9. define an rvalue-reference to an int-type parameter?
+ > Not required since a non-const value-type parameter can copy the
+ rvalue just as easily.
+
+
+10. define an rvalue-reference to a std::string parameter?
+ > This is appropriate when the function wants to steal the temporary
+ object's data and modify it.
+
+ In this example, `first` is obtained from the return of getFirst() and
+ concatenated with `second` which is also an rvalue ref.
+
+ std::string merge(std::string &&first, std::string back)
+ { 
+    first += back;
+    return first;
+ }
+ merge(getfirstname(), getlastname());
+
+
+11. return an int-type value?
+ > This is appropriate when a factory function creates some int-type value
+ and wants to send its value to the caller.
+
+ In this example, the function returns the integer size of a string to
+ the caller.
+
+ int getSize(string const &txt);
+
+ int size = getSize("hello"); // size = 5
+
+
+12. return a std::string value?
+ > This is appropriate when a factory function creates a string object and
+ wants to send its value to the caller.
+
+ In this example, the function creates a new string by reversing the input
+ string and returns its value to the caller.
+
+ string reverse(string &txt);
+
+ string rev = reverse("abc"); // "cba"
+
+
+13. return a const reference to an int?
+ > const reference to int-type in return is unnecessary since the returned 
+ value will be copied regardless. 
+
+
+14. return a const reference to a std::string?
+ > This is appropriate when the function needs to send the string object
+  directly to the caller but the caller may not modify the string.
+
+  In this example, the function returns the spell-checked string object but
+   does not want the caller to modify it.
+
+   string const &spellCheck(string &book);
+
+   string newBook = spellCheck(oldBook);
+   newBook += '\n'; // error
+
+
+15. return a non-const reference to an int?
+ > This is unnecessary as the function can simply return the int by value.
+
+
+16. return a non-const reference to a std::string?
+ > This is appropriate when the function wants to send the created string
+ object directly to the caller and the caller may modify the string.
+
+ In this example, the function sends a string by joining the first and last
+ name and the caller can further modify the string.
+
+ string &getName(string const &fname, string const &lname);
+
+ string name = getName("john", "doe");
+ name += "hello"; // OK
+
+
+17. return a const rvalue-reference to an int?
+ > No need for rvalue reference. The rvalue can be passed by value since it 
+ can be copied at the caller's side. 
+
+
+18. return a const rvalue-reference to a std::string?
+ > This is appropriate when the function wants to send a temporary string
+ object from an internal function return/expression evaluation, and the
+ caller may not modify the string.
+
+ In this example, the function returns the immediate string output of another
+ function to the caller but the caller cannot modify it.
+
+
+ string const &&fixSpellings(string &str)
+ {
+     return closestValidWord(str);
+ }
+ 
+ string newStr = fixSpellings("jello"); // "hello"
+ newStr += "world"; // error
+
+
+19. return an rvalue-reference to an int?
+ > unnecessary. The int can be returned as is and can be copied at the caller.
+
+
+20. return an rvalue-reference to a std::string?
+ > This is appropriate when the function wants to send a temporary string
+ object from an internal function return/expression evaluation, and the
+ caller may modify the string.
+
+ In this example, the function returns the immediate string output of another
+ function to the caller but the caller can modify it.
+
+
+ string &&fixSpellings(string &str)
+ {
+     return closestValidWord(str);
+ }
+ 
+ string newStr = fixSpellings("jello"); // "hello"
+ newStr += "world"; // OK
