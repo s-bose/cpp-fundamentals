@@ -9,16 +9,19 @@ int main(int argc, char *argv[])
     std::cout << num << ", displayed using radix " << radix << " is: ";
 
     std::string result;
-    if (!num)
+    if (num == 0)                    // display 0 if num is 0 
         std::cout << num;
 
     while (num)
     {
         size_t digit = num % radix;  // extract LSB in radix base
-        num = num / radix;
-                                     // produce alphabets for digits > 9 
-        digit = digit > 9 ? ('a' + (digit - 10)) : digit;
-        result += digit;
+        num /= radix;
+                                      
+        if (digit > 9)               // produce alphabets for digits > 9
+            result += static_cast<char>('a' + (digit - 10));
+        else
+           result += std::to_string(digit);
+
     }
                                      // print digits in MSB first order
     std::cout << std::string(result.rbegin(), result.rend()) << '\n';

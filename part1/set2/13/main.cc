@@ -1,5 +1,4 @@
 #include <iostream>
-#include <sstream>
 #include <string>
 
 int main(int argc, char *argv[])
@@ -14,21 +13,25 @@ int main(int argc, char *argv[])
     {
         int mask = num & (1 << shift);  // mask = 1... -2^(N-1)
 
-        std::stringstream ss;
-
-        if (mask)
-        {                           // if 2's power exists  
-            bits += '1';            // append the 2^shift components
-            ss << " + " << mask;    // delimiting with +
-        }
+        std::string bitval;
+        
+        if (not mask)
+            bits += '0';           // prepend bits from right to left
         else
-            bits += '0';
+        {
+            bits += '1';
+                                    // if 2's power exists 
+                                    // append the 2^shift components
+                                    // delimiting with '+'
 
-        bit_vals.insert(0, ss.str());   // prepend MSB values to LSBs 
+            bitval += " + " + std::to_string(mask);
+        }
+
+        bit_vals.insert(0, bitval); // prepend bit values
     }
 
     std::cout << num << " = " << std::string(bits.rbegin(), bits.rend())
 
                                     // remove delim from the beginning
-              << " = " << bit_vals.erase(0, 3) << '\n';
+                     << " = " << bit_vals.erase(0, 3) << '\n';
 }
