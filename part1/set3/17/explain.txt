@@ -1,0 +1,8 @@
+Exercise 17:
+
+Define two overloaded functions computing sums of values.
+
+The previous solution with overloading absed on parameter order was
+error-prone. 
+The new solution takes an additional parameter as a int/double 
+reference to store the sum in, supplied by the caller.

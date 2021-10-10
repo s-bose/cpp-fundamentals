@@ -1,0 +1,7 @@
+Exercise 18:
+
+Return multiple values from a function.
+
+In our previous the structure of internal header was not well implemented.
+Additionally, nr containing edge cases (nr = 0 or nr > argc) would produce
+unwanted results & segfaults, which is now handled.
