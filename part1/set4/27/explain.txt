@@ -1,0 +1,4 @@
+Exercise 27:
+
+Define an array of 5 Person objects and read & write their
+data into the stadard input/output.

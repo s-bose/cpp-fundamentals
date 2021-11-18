@@ -1,0 +1,6 @@
+//#define XERR
+#include "person.ih"
+
+Person::
+{
+}

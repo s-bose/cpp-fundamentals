@@ -1,0 +1,41 @@
+Exercise 25:
+Describe in your own words what `encapsulation' and `data hiding' means, 
+and why these concepts are important when designing classes.
+
+Provide a small example of a self-defined class illustrating your explanation.
+
+
+> Data hiding is the process of making the data of certain sections of a 
+ program inaccessible or restricted to other parts.
+
+ Encapsulation is another form of data hiding where different functional 
+ components can interact with each other with the least amount of coupling
+ (dependency), while also hiding away internal data & implementation and 
+ only providing an interface to the outside world.
+
+ C++ classes define a structure with data and functions that operate on
+ the data. The data members are be default private, and additional access 
+ specifiers can be used to control their accessibility outside. By providing 
+ public accessor and manipulator functions, we gain control over the handling 
+ of data and prevent undesired manipulation.
+ If a class contains multiple functional components, each responsible for their
+ own data-integrity, we don't have to worry about the inner workings of those
+ components. It also makes it easier to work with just the outside interfaces
+ of the components, and due to reduced coupling it is easier to modify or add or
+ remove new functionalities.
+
+ In the following example, definition of class UserDetails provides some private
+ data and some getter and setters to access/modify those data. The private data
+ are hidden in the sense that no one can directly access or modify the data members,
+ but has to use the functions. There are other class objects like BankDetails 
+ object as well, with its own sets of data & functions encapsulated within it.
+ 
+
+The example only requires you to submit a class interface, not a class implementation. 
+Why is the implementation irrelevant? 
+
+
+> In order to use the class as a user, we only need to be aware of its data &
+ the functions that operate on the data. How they are implemented is a matter internal 
+ to the class and the developer of the class. The user does not need to be aware of 
+ that.

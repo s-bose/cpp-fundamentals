@@ -1,0 +1,71 @@
+Exercise 33:
+
+1. what differences exist between pointer variables and arrays?
+> Pointer variables indicate the address of a location in memory where
+ some value is stored.
+ Arrays are contiguous locations in memory where the name of the array
+ contains the memory address of the first element of the array.
+
+2. what differences exist between pointer variables and reference
+variables?
+> Pointer variables hold the address of some other object and need to be
+ dereferenced to access the value they're pointing to.
+ References act as aliases to the other object and the other object's
+ values can be directly accessed by the reference.
+
+3. how element [3][2] is reached for:
+    3.(a): for the variable `int array[20][30]'
+
+ array ------>      -------------------------------------------------------------
+                    | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+                    -------------------------------------------------------------
+                    -------------------------------------------------------------
+                    | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+                    -------------------------------------------------------------
+                    -------------------------------------------------------------
+                    | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+                    -------------------------------------------------------------
+                    -------------------------------------------------------------
+ array[3] ----->    | | |X| | | | | | | | | | | | | | | | | | | | | | | | | | | |
+                    -------------------------------------------------------------
+                         ^                                                      ...X20
+                         |
+                         array[3][2]
+
+
+    3.(b): for the variable `int *pointer[20]'.
+
+
+                    -----------------
+    pointer --->          int *
+                    -----------------
+                    -----------------
+                          int *
+                    -----------------
+                    -----------------
+                          int *
+                    -----------------
+                    -----------------              ----
+   pointer[3] --->        int *      --------->   |    |
+                    -----------------              ----
+                                ...X20             ----
+                                                  |    |
+                                                   ----
+                                                   ----
+                                                  | X  | <--- pointer[3][2]
+                                                   ----
+                                                   ----
+                                                  |    |
+                                                   ----
+                                                   ----
+                                                  |    |
+                                                   ----
+                                                    ...X30
+
+
+4. What is meant by `pointer arithmetic`?
+>  Pointer arithmetic is using arithmetic expressions like addition
+ and subtraction on pointer values to get new addresses or find the 
+ number of `sizeof(Type)` steps between two pointers to a contiguous
+ location of Type type of objects.
+ 
