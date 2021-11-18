@@ -1,0 +1,49 @@
+Exercise 50:
+
+Consider the following program:
+ 
+    #include <fstream>
+    using namespace std;
+
+    void hello(ostream &out)
+    {
+        out << "hello world\n";
+    }
+
+    int main()
+    {
+        ofstream out1{ "/tmp/out1" };
+        hello(out1);
+
+        fstream out2{ "/tmp/out2" };
+        hello(out2);
+    }
+
+When it runs, /tmp/out1 contains hello world, but /tmp/out2 doesnt exist.
+Explain the outcome.
+
+> fstream constructor has a default openmode of both ios::in and ios::out,
+making the file available for both reading and writing, in which case the
+file should be already existing. 
+
+In this case, if it is only used for writing, we can explicitly set the
+ios::out flag to use the stream only for outputting and create the file if 
+it does not exist.
+
+
+    #include <fstream>
+    using namespace std;
+
+    void hello(ostream &out)
+    {
+        out << "hello world\n";
+    }
+
+    int main()
+    {
+        ofstream out1{ "/tmp/out1" };
+        hello(out1);
+
+        fstream out2{ "/tmp/out2" , ios::out };
+        hello(out2);
+    }

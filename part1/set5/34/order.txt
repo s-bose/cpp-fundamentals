@@ -1,0 +1,12 @@
+explain.txt
+copycat/copycat.h
+copycat/copycat.ih
+copycat/copycat1.cc
+copycat/copycat2.cc
+copycat/copycat3.cc
+copycat/ntbsCopy.cc
+copycat/duplicate.cc
+copycat/nElements1.cc
+copycat/nElements2.cc
+copycat/data.cc
+copycat/destructor.cc

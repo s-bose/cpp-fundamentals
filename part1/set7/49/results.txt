@@ -1,0 +1,2 @@
+./a.out 100'000'000  2.06s user 0.00s system 99% cpu 2.061 total
+

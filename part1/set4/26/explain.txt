@@ -1,0 +1,4 @@
+Exercise 26:
+
+Implement the class Person as discussed in the C++ Annotations. 
+In addition, implement extract() and insert() member functions.
