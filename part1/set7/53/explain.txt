@@ -1,3 +1,13 @@
 Exercise 53:
 
 Display floating-point numbers using modifiers.
+
+Output:
+
+> ./a.out
+std display '          12.04'
+left aligned '12.04          '
+right aligned '          12.04'
+3 digits '           12.0'
+4-digit fraction '        12.0400'
+std display 12.0400
