@@ -1,0 +1,18 @@
+Exercise 49:
+
+Learn how to prevent output from being written.
+
+1. Explain the differences in execution time.
+
+>
+    // without if-condition
+    ./a.out 100'000'000  2.15s user 0.00s system 99% cpu 2.154 total
+
+    // with if-condition
+    ./a.out 100'000'000  0.15s user 0.00s system 99% cpu 0.154 total
+
+> Without the if-condition, the cout statement still executes 1 billion times,
+  except it does not produce any output. 
+
+  With the if-condition, the statement will not execute even once because
+  failbit has been set and cout.good() is false.
