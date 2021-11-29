@@ -1,0 +1,3 @@
+3. Learn to perform file operations, not requiring streams 
+To prevent using streams for operations on files, we use the filesystem library instead.
+It provides "facilities for performing operations on file systems and their components, such as paths, regular files, and directories". Source: https://en.cppreference.com/w/cpp/filesystem 
