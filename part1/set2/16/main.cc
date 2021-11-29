@@ -12,17 +12,18 @@ int main(int argc, char *argv[])
     if (num == 0)                    // display 0 if num is 0 
         std::cout << num;
 
-    while (num)
+    do
     {
         size_t digit = num % radix;  // extract LSB in radix base
         num /= radix;
-                                      
-        if (digit > 9)               // produce alphabets for digits > 9
-            result += static_cast<char>('a' + (digit - 10));
-        else
-           result += std::to_string(digit);
+        
+        digit += digit < 10 ? '0' : 'a' - 10;   // if digit in 0-9, add that to char '0
+                                                // to get the correct char
+                                                // else get the displacement from 'a'
 
+        result.insert(0, 1, digit);
     }
+    while (num != 0);
                                      // print digits in MSB first order
-    std::cout << std::string(result.rbegin(), result.rend()) << '\n';
+    std::cout << argv[2] << ", displayed using radix " << argv[1] << " is: " << result << '\n';
 }

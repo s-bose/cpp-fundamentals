@@ -1,0 +1,39 @@
+#include <future>
+#include <string>
+#include <iostream>
+
+
+class Arg
+{
+public:
+    static Arg const &instance(unsigned argc, char **argv,
+                                char const *arguments);
+};
+
+class Process
+{
+public:
+    Process(Arg const &arg);
+    void run();
+};
+
+int handle(std::exception_ptr ptr);
+
+
+inline Arg const &Arg::instance(unsigned argc, char **argv,
+                                   char const *arguments)
+{
+    // implementation
+    return *(new Arg());
+}
+
+inline Process::Process(Arg const &arg)
+{
+    // implementation
+    
+}
+
+inline void Process::run()
+{
+    // implementation
+}

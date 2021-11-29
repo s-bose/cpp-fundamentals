@@ -1,9 +1,14 @@
 #!/bin/bash
 
+DIR=$1;
+if [[ ! -d $DIR ]]
+then
+    mkdir -p $DIR;
+fi
+cd $DIR;
 
 echo "Creating metadata.txt";
 touch metadata.txt;
-
 
 read -p "Enter start: "  start;
 read -p "Enter end: " end;
