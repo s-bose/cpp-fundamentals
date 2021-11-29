@@ -1,3 +1,5 @@
 Exercise 1:
 
 Add index, insertion and comparison operators to a class.
+
+Index operators, being single-lined has been defined inline.
