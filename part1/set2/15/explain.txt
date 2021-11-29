@@ -1,0 +1,22 @@
+Advanced exercise
+Purpose of this exercise: handle some bit patterns.
+The reverse program (cf. exercise 12) works for ASCII input, but fails on UTF-8.
+
+In ASCII, every character on your terminal is a byte in memory. There may be chars that your terminal doesn't put on the screen (like backspaces). And there are codes that can be sent to the terminal that consist of multiple bytes, and make it do other things than write chars (like change its own settings). But no char is more than one byte long.
+
+UTF-8 encodes 'code points'. Think of those as characters on your terminal. One such code point may take up 1, 2, 3 or 4 bytes. So when you start reading bytes, how do you know whether this is the first byte of a code point, and how do you know how many bytes the code point has?
+
+If the highest bit of a byte you read is unset, it is a single-byte code point (a normal standard ASCII character). If said bit is set, the code point has multiple bytes, according to the following patterns:
+
+
+code point length |   byte 0   |   byte 1   |   byte 2   |    byte 3
+              1   | 0b0xxxxxxx |            |            |
+              2   | 0b110xxxxx | 0b10xxxxxx |            |
+              3   | 0b1110xxxx | 0b10xxxxxx | 0b10xxxxxx |
+              4   | 0b11110xxx | 0b10xxxxxx | 0b10xxxxxx |  0b10xxxxxx
+
+For more information, see wikipedia on UTF-8
+
+According to the table, all subsequent bytes of a multi-char code point should match 0b10xxxxxx. Code points of a single byte can be output as a char. Code points of any length can be output by constructing a string out of them, writing that string to cout. As neither std::string nor std::ostream is aware of code points (as far as they are concerned, they're just processing bytes), creating a string of the bytes of a code point is as simple as determining which bytes make up the code point, and putting them in the string. Fortunately, when inserting such an UTF-8 string into cout it is recognized as a UTF-8 character.
+
+Write a program that reads its input line by line, and outputs each line in reverse, even if the input is in UTF-8.

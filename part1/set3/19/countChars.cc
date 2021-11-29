@@ -4,7 +4,8 @@ size_t countChars(istream& is)
 {
     size_t count = 0;
 
-    while (is.get() != EOF)
+    char ch;
+    while (is.get(ch))
         ++count;
         
     return count;
