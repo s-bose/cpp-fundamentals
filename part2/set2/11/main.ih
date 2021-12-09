@@ -1,0 +1,33 @@
+#include <iostream>
+#include <exception>
+#include <cstring>
+
+using namespace std;
+
+class MyException
+{
+    static size_t d_count;
+   
+    public:
+        MyException();
+        MyException(MyException const &other);
+        static size_t count(); 
+};
+
+size_t MyException::d_count = 0;
+
+inline MyException::MyException()
+{
+    ++d_count;
+}
+
+inline MyException::MyException(MyException const &other)
+{
+    ++d_count;
+}
+
+inline size_t MyException::count()
+{
+    return d_count;
+}
+

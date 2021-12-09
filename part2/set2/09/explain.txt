@@ -1,0 +1,4 @@
+Exercise 9:
+
+Design an interactive program (just one main function) in which you repeatedly request user input. The input consists of numbers, one number per line. To end the program enter a single q.
+

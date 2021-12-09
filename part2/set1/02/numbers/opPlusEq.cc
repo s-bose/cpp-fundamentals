@@ -11,5 +11,5 @@ Numbers &Numbers::operator+=(Numbers const &other)
         return *this;
     }
     std::cerr << "Cannot add: size mismatch" << '\n';
-    return *(new Numbers(0)); // dummy return
+    return *(new Numbers(0));   // dummy default return
 }

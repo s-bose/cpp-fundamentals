@@ -1,13 +1,13 @@
 #include "main.ih"
 
-int handle(std::exception_ptr ptr)
+int handle(std::exception_ptr ptr)  
 {
     try
     {
         if (ptr)
             std::rethrow_exception(ptr);
     }
-    catch(int const usage)
+    catch(int const usage)      // handle multiple exceptions
     {
         return usage;
     }
