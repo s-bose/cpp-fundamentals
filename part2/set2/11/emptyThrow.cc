@@ -10,7 +10,7 @@ int main()
         }
         catch(MyException const &exp)
         {
-            throw;
+            throw;  // empty throw
         }
         
     }

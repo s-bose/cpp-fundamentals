@@ -6,11 +6,11 @@ int main()
     {
         throw *(new MyException);
     }
-    catch(MyException exp)
+    catch(MyException exp)          // catch exception by value
     {
         std::cerr << MyException::count() << '\n';
     }
-    // catch(MyException const &exp)
+    // catch(MyException const &exp) // catch reference
     // {
     //     std::cerr << MyException::count() << '\n';
     // }

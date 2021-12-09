@@ -21,13 +21,13 @@ inline MyException::MyException()
     ++d_count;
 }
 
-inline size_t MyException::count()
-{
-    return d_count;
-}
-
 inline MyException::MyException(MyException const &other)
 {
     ++d_count;
+}
+
+inline size_t MyException::count()
+{
+    return d_count;
 }
 

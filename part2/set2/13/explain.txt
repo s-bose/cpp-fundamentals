@@ -1,0 +1,18 @@
+Exercise 13:
+
+Create a class MaxFour that can have a maximum of 4 instances. Throw an exception if the max number of instances is reached. 
+
+
+> MaxFour class contains a static d_count that tracks the no. of instances created.
+ Its constructor has a function-try block that throws an exception when no. of instances > 4
+ The immediate catch block deletes the allocated memory for the incomplete instance and reduces count and rethrows exception.
+
+ In main, the re-thrown exception is caught and the delete[] statement calls the destructor of the 4 constructed objects.
+
+
+explain why the solution is (so) simple.
+
+> when 4 instances have been created, any further call to MaxFour constructor throws before reaching the end parenthesis, thus the
+object is not created, the immediate catch block releases the allocated memory and re-throws. Since the destructor is only called
+for fully-constructed objects, when calling delete[] from main(), only the first 4 constructed obj's destructor is called and their
+memory released, while the remaining instances are not created at all.

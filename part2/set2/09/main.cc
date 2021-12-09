@@ -20,9 +20,9 @@ int main()
             }
             cout << stod(line) << '\n';
         }
-        catch(...)
+        catch(...)   // catch-all
         {
-            std::cerr << '`' << line << "' is not a number"<< '\n';
+            cerr << '`' << line << "' is not a number"<< '\n';
         }
     }
 }
