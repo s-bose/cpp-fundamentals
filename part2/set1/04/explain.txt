@@ -1,5 +1,6 @@
 Exercise 4:
-learn why streams can be used to determine the truth values of conditions, but not to assign values to bool variables.
+
+Learn why streams can be used to determine the truth values of conditions, but not to assign values to bool variables.
 
 Function promptGet:
 

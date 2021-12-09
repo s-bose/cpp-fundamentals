@@ -1,0 +1,4 @@
+Exercise 3:
+Learn to perform file operations, not requiring streams 
+
+To prevent using streams for operations on files, we use the filesystem library instead.
