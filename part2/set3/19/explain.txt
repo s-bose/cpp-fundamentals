@@ -1,0 +1,27 @@
+Exercise 19:
+
+understand the construction/destruction order when using inheritance.
+
+1. Explain why, when Derived is derived from Base the Base class is constructed before the Derived class. and the Base class is destroyed only after the Derived class has been destroyed.
+
+> When a Derived class object is constructed, it is built on top of a Base object. Thus, the Base object needs to be available before the Derived part is constructed.
+
+The order of destruction follows the reverse of the order of construction of inheritance chain.
+If the Derived constructor throws some exception, the Derived object won't be properly constructed, hence its destructor won't be called. But the inner Base obj was already constructed which then will be properly destructed.
+
+
+2. Provide a small example, and explain (in words, not by running the program) that the example would completely fail if the ordering would be reversed.
+
+> Construction:
+    if Derived is constructed first, and it somehow throws, we never get to the Base constructor, thus neither part of the object is constructed.
+
+  Destruction:
+    if Base is destructed first, any data of Derived that's using the inherited data from Base would become inconsistent and lead to memory leak. 
+
+
+3. When using placement new, or in the context of unrestricted unions, explicit destructor calls are encountered. Explain why code using such explicit destructor calls for objects of a class Derived, which was derived from Base doesn't have to call explicitly the Base class's destructor.
+
+
+> Derived destructors never explicitly call Base destructor. For Derived objs constructed using placement new, calling their destructor explicitly follows the same reverse order where Derived class is destructed first, then the Base destructor is implicitly called.
+
+

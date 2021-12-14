@@ -1,0 +1,11 @@
+#include <iostream>
+#include <string>
+#include <initializer_list>
+
+using namespace std;
+
+void printStrings(initializer_list<string> strList);
+string greet(string const &str);
+string greet(string &&tmp);
+string greet(string const *ptr);
+

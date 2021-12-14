@@ -1,0 +1,4 @@
+Exercise 20:
+
+Create a class that offers all members of std::string, and whose objects can be used as argument in all cases where a string parameter is used; be it a value, reference, rvalue reference or pointer to a string.
+

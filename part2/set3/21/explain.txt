@@ -1,0 +1,15 @@
+Exercise 21:
+
+Learn to handle hiding members.
+For this exercise we use the class std::string as a base class, although that's bad practice.
+
+1. Why is it bad practice?
+
+> Public inheritance is only viable when using polymorphism and the base class offers virtual functions to be overriden by derived. std::string offers no such virtual functions. Another downside is slicing. Passing String objects to functions expecting std::string will slice off the std::string base object part of the String object and work with that. Thus if String wants to extend std::string by offering some extra data members and functions, they will be lost.
+
+2. Show how you can use the member insert(size_t opos, size_t count, char ch) or any other already available insert member of the class string in a main function in which merely a String str object is defined and how all comparison operators can be used (simply apply the comparison operators using str as lhs and rhs argument).
+
+> To access all the available insert() functions (including their overloads) from std::string, we simply add "using std::string::insert;" inside String class definition.
+
+Even without defining its own comparison operators, all these comparison operators can directly be used on String objects because a String object "is-a" std::string, and calling a comparison operator on it will call the corresponding operator for its underlying std::string base object.
+
