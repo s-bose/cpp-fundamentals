@@ -1,7 +1,4 @@
 #include "mystring.h"
 
-#include <cstring>
-
 using namespace std;
 
-string repeat(size_t count, string const &str);

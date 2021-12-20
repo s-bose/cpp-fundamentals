@@ -12,10 +12,10 @@ What members can be accessed by users of a Derived object?
 3. What changes if Derived uses protected inheritance? 
 
 > Both public and protected members inherited from `Base' becomes protected under `Derived'.
-So, only `Derived's designer can access them, not its users.
+So, only `Derived's designer, and the designers of the classes derived from 'Derived' can access them, but none of their users can.
 
 4. And what changes if Derived uses private inheritance?
 
 > All members from `Base' becomes private and thus inaccessible from `Derived'.
-So, neither `Derived's designer nor its user has access to it.
+So, neither `Derived's designer, nor Derived's derived class designer, nor their users have access to it.
 

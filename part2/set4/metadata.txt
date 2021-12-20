@@ -1,5 +1,3 @@
-Rater: FBB
-
-Set: Set 3
+Set: Set 4
 
 Authors: Moumita Sen, Pranesh Mukhopadhyay, Shiladitya Bose

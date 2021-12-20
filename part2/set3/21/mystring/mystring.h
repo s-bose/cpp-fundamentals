@@ -2,7 +2,7 @@
 #define INCLUDED_STRING_
 
 #include <string>
-
+#include <compare>
 class String: public std::string
 {
     public:
@@ -16,7 +16,8 @@ class String: public std::string
 };
 
 inline String::String(std::string const &str)
-: std::string(str)                  // construct from std::string
+: 
+    std::string(str)                  // construct from std::string
 {}
 
 
@@ -34,34 +35,10 @@ inline bool operator==(String const &lhs, String const &rhs)
     return std::string(lhs) == std::string(rhs);
 }
 
-
-inline bool operator!=(String const &lhs, String const &rhs)
+inline std::strong_ordering operator<=>(String const &lhs, String const &rhs)
 {
-    return std::string(lhs) != std::string(rhs);
-}
-
-
-inline bool operator<(String const &lhs, String const &rhs)
-{
-    return std::string(lhs) < std::string(rhs);
-}
-
-
-inline bool operator<=(String const &lhs, String const &rhs)
-{
-    return std::string(lhs) <= std::string(rhs);
-}
-
-
-inline bool operator>(String const &lhs, String const &rhs)
-{
-    return std::string(lhs) > std::string(rhs);
-}
-
-
-inline bool operator>=(String const &lhs, String const &rhs)
-{
-    return std::string(lhs) >= std::string(rhs);
+                                    // complete ordering
+    return std::string(lhs) <=> std::string(rhs);
 }
 
 

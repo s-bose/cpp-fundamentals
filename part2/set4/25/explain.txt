@@ -1,0 +1,18 @@
+Exercise 25:
+
+Learn to define a base class having virtual members and a class that's derived from it.
+
+Base has private virtual vHello and a public interface hello that calls vHello.
+Derived derives from Base and overrides vHello with its own functionality, making it polymorphic.
+In message, a reference to Base object d_base is used to call hello.
+Since Base class is now polymorphic, the appropriate vHello will be called based on the object the Base reference refers to at runtime.
+
+
+
+How many Vtables and how many v_pointers are defined by the program? Explain your answer.
+
+> 2 Vtables since there are two classes having virtual members (Base vHello, and Derived inheriting Base's vHello).
+3 v_pointers. Base's vtable only has one entry for its virtual vHello, and there is only one base instance.
+Derived's vtable has 2 entries, one vHello inherited from Base, and another that Derived overrided itself, and it also has
+one derived instance. Thus a total of 3 v_pointers in 2 objects.
+

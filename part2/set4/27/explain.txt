@@ -1,0 +1,7 @@
+Exercise 27:
+
+Learn to use escalation.
+Enum Msg is used in a class Handler, where it is only available to the members of Handler. It is also used in a class Processor, where it is also only available to the members of the that class.
+
+Using escalation, we provide a Base struct that contains just the enum Msg, thus, both Handler and Processor inheriting from Base will obtain the single point of maintenance for Msg enum.
+We use private inheritance to make the enum available only for the members in their respective derived classes.

@@ -13,3 +13,6 @@ For this exercise we use the class std::string as a base class, although that's 
 
 Even without defining its own comparison operators, all these comparison operators can directly be used on String objects because a String object "is-a" std::string, and calling a comparison operator on it will call the corresponding operator for its underlying std::string base object.
 
+
+# Edit Notes:
+removed all the unneccessary comparison operators and used the spaceship (<=>) operator together with operator==() to enable total ordering.
