@@ -5,8 +5,8 @@ Then design a simple class Derived, inheriting from Base. Derived's constructors
 
 Show what happens if you call each of Derived's constructors. Explain your finding
 
-> With just empty body, all the Derived constructors implicitly call Base's default constructor first, then the rest of the Derived
-constructor body.
+> In the simplest case, Derived does not define any constructor of its own, so any default, copy or move construction calls the corresponding Base constructor to construct the Base object.
+
 
 2. change Derived's constructors so that each calls the matching Base constructor.
 
@@ -16,13 +16,15 @@ For move, we have to pass 'Derived &&tmp' through 'std::move' to turn it into rv
 
 The resulting definitions look like this.
 
-    Derived::Derived(Derived &other)
-    : Base(other)
-    {}
+Derived::Derived(Derived &other)
+: 
+    Base(other)
+{}
 
-    Derived::Derived(Derived &&tmp)
-    : Base(std::move(tmp))
-    {}
+Derived::Derived(Derived &&tmp)
+: 
+    Base(std::move(tmp))
+{}
 
 
 3. what would you have to do to ensure that Derived's copy constructor calls Base's move constructor?
@@ -30,9 +32,10 @@ The resulting definitions look like this.
 > To turn 'Derived const &other' to an rvalue we first cast it to non-const reference which allows us to make it movable using 'std::move',
 thus turning it into rvalue and call Base's move constructor.
 
-    Derived::Derived(Derived const &other)
-    : Base(std::move(const_cast<Derived &>(other)))
-    {}
+Derived::Derived(Derived const &other)
+: 
+    Base(std::move(const_cast<Derived &>(other)))
+{}
 
 
 4. how would you realize that Derived's move constructor calls Base's copy constructor?
@@ -40,6 +43,7 @@ thus turning it into rvalue and call Base's move constructor.
 > By simply passing 'Derived &&tmp' to Base's constructor turns tmp into an lvalue and thus, Base's copy constructor is called.
 
 
-    Derived::Derived(Derived &&tmp)
-    : Base(tmp)
-    {}
+Derived::Derived(Derived &&tmp)
+: 
+    Base(tmp)
+{}

@@ -1,0 +1,13 @@
+Exercise 26:
+
+Learn to define classes having Vtables whose objects can safely be destroyed.
+
+> Default constructor in Derived class initializes d_str with "hello from Derived".
+We make the destructor virtual in Base class and define an empty destructor for Base.
+
+In derivedFactory, we create a pointer to `size' no. of Base pointers, then initialize 
+each Base pointers to Derived objects with default construction.
+
+In main, we call delete for each of the Base pointers which, due to the polymorphic nature
+of destructor, appropriately calls the Derived destructor, and finally we release the memory
+of the pointer to pointers.
