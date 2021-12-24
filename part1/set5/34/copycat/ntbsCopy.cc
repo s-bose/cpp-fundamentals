@@ -2,11 +2,12 @@
 
 char *CopyCat::ntbsCopy(char const *ntbs)
 {
-    size_t size = nElements(ntbs);
-    
-    char *newCopy = new char[size];          // copy NTBS pointer
-    for (size_t idx = 0; idx != size; ++idx)
-        newCopy[idx] = ntbs[idx];            // copy each char
-    
-    return newCopy;
+    // this basically copies the NTBS string to ret, preserving the null-termination
+    string tmp{ntbs}; // get the ntbs's details
+
+    char *ret = new char[tmp.length() + 1]; // allocate memory (+ space for `\0')
+
+    ret[tmp.copy(ret, string::npos)] = 0; // initialize the memory for \0
+
+    return ret; // return the copy
 }

@@ -7,5 +7,4 @@ size_t CopyCat::nElements(char const *const *data)
     while (*data++)
         ++size;
     return size;
-
 }
