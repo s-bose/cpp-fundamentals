@@ -2,8 +2,8 @@
 
 Strings::Strings(char **environLike)
 :
-    d_str(0)
+    d_data(0)
 {
     while (*environLike)
-        d_str.push_back(*environLike++);
+        d_data.push_back(Wrap{ *environLike++ });
 }

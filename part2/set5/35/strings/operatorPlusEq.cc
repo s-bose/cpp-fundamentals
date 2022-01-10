@@ -2,6 +2,6 @@
 
 Strings &Strings::operator+=(std::string const &rhs)
 {
-    d_str.push_back(rhs);
+    d_data.push_back(rhs);
     return *this;
 }

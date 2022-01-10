@@ -6,9 +6,11 @@
 #include <iostream>
 #include <memory>
 
+#include "wrap/wrap.h"
+
 class Strings
 {
-    std::vector<std::shared_ptr<std::string>> d_str;
+    std::vector<Wrap> d_data;
 
     public:
         Strings() = default;
@@ -20,9 +22,9 @@ class Strings
 
         size_t size() const;
         size_t capacity() const;
-        std::string const &at(size_t idx) const; // for const-objects
-        std::string &at(size_t idx);             // for non-const objects
-        std::string &operator[](size_t idx); 
+        Wrap const &at(size_t idx) const; // for const-objects
+        Wrap &at(size_t idx);             // for non-const objects
+        Wrap &operator[](size_t idx); 
 
         void resize(size_t newSize);
         void reserve(size_t newCapacity);
@@ -30,59 +32,45 @@ class Strings
     private:
 };
 
-
-inline Strings::Strings(int argc, char **argv)
-:
-    d_str(argv, argv + argc)
-{}
-
-
 inline size_t Strings::size() const
 {
-    return d_str.size();
+    return d_data.size();
 }
-
 
 inline size_t Strings::capacity() const
 {
-    return d_str.capacity();
+    return d_data.capacity();
 }
-
-
-inline std::string const &Strings::at(size_t idx) const
-{
-    return d_str[idx];
-}
-
-
-inline std::string &Strings::at(size_t idx)
-{
-    return d_str[idx];
-}
-
-
-inline std::string &Strings::operator[](size_t idx)
-{
-    return d_str[idx];
-}
-
 
 inline void Strings::resize(size_t newSize)
 {
-    d_str.resize(newSize);
+    d_data.resize(newSize);
 }
-
 
 inline void Strings::reserve(size_t newCapacity)
 {
-    d_str.reserve(newCapacity);
+    d_data.reserve(newCapacity);
 }
 
+inline Wrap const &Strings::at(size_t idx) const
+{
+    return d_data[idx];
+}
+
+inline Wrap &Strings::at(size_t idx)
+{
+    return d_data[idx];
+}
+
+inline Wrap &Strings::operator[](size_t idx)
+{
+    return d_data[idx];
+}
 
 inline void Strings::printStrs() const
 {
-    for (auto const &str: d_str)
-        std::cout << str << '\n';
+    for (auto const &item : d_data)
+        std::cout << item << '\n';
 }
 
 #endif
