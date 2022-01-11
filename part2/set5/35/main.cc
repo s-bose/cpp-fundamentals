@@ -8,10 +8,10 @@ int main(int argc, char **argv)
     Strings strings(argc, argv);
     Strings strings2(strings);
 
-    strings2[0] = "first one got changed";
-    strings2.printStrs();
+    auto strCpy = strings[0];
+    strCpy = "hello world";
+    cout << strCpy << '\n';
+    
+    cout << strings[0] << '\n';
 
-    cout << "\n\n\n";
-
-    strings.printStrs();
 }

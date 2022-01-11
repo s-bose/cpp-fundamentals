@@ -6,13 +6,34 @@
 #include <iostream>
 #include <memory>
 
-#include "wrap/wrap.h"
 
 class Strings
 {
-    std::vector<Wrap> d_data;
+    std::vector<std::string> d_str;
 
     public:
+        class Wrap;
+        Wrap operator[](size_t idx);
+
+        class Wrap
+        {   
+            std::shared_ptr<std::string> d_data;
+
+            friend Wrap Strings::operator[](size_t idx);
+
+            Wrap() = default;
+            Wrap(std::string &str);
+
+
+            public:
+                std::string &operator=(std::string const &rhs);
+                operator std::string const &() const;
+                friend std::ostream &operator<<(std::ostream &out, Strings::Wrap const &obj);
+
+            private:
+                void swap(Wrap &other);
+        };
+
         Strings() = default;
         Strings(int argc, char **argv);
         Strings(char **environLike);
@@ -22,55 +43,61 @@ class Strings
 
         size_t size() const;
         size_t capacity() const;
-        Wrap const &at(size_t idx) const; // for const-objects
-        Wrap &at(size_t idx);             // for non-const objects
-        Wrap &operator[](size_t idx); 
 
         void resize(size_t newSize);
         void reserve(size_t newCapacity);
 
+
     private:
 };
 
+
+inline Strings::Wrap::Wrap(std::string &str)
+:
+    d_data(std::shared_ptr<std::string>( new std::string{ str } ))    
+{}
+
+inline Strings::Wrap::operator const std::string &() const
+{
+    return *d_data;
+}
+
+inline Strings::Wrap Strings::operator[](size_t idx)
+{
+    return Strings::Wrap( d_str[idx] );
+}
+
 inline size_t Strings::size() const
 {
-    return d_data.size();
+    return d_str.size();
 }
 
 inline size_t Strings::capacity() const
 {
-    return d_data.capacity();
+    return d_str.capacity();
 }
 
 inline void Strings::resize(size_t newSize)
 {
-    d_data.resize(newSize);
+    d_str.resize(newSize);
 }
 
 inline void Strings::reserve(size_t newCapacity)
 {
-    d_data.reserve(newCapacity);
+    d_str.reserve(newCapacity);
 }
 
-inline Wrap const &Strings::at(size_t idx) const
+inline std::ostream &operator<<(std::ostream &out, Strings::Wrap const &obj)
 {
-    return d_data[idx];
-}
-
-inline Wrap &Strings::at(size_t idx)
-{
-    return d_data[idx];
-}
-
-inline Wrap &Strings::operator[](size_t idx)
-{
-    return d_data[idx];
+    return out << static_cast<std::string const &>(obj);
 }
 
 inline void Strings::printStrs() const
 {
-    for (auto const &item : d_data)
-        std::cout << item << '\n';
+    for (size_t idx = 0; idx != d_str.size(); ++idx)
+        std::cout << d_str[idx] << '\n';
 }
 
 #endif
+
+
