@@ -1,0 +1,3 @@
+Exercise 39:
+
+learn to modify argv without explicitly using new.
