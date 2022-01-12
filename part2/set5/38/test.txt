@@ -1,0 +1,5 @@
+first object line1
+first object line2
+
+second object line1
+second object line2

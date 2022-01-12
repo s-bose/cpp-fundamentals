@@ -13,5 +13,4 @@ int main(int argc, char **argv)
     cout << strCpy << '\n';
     
     cout << strings[0] << '\n';
-
 }
