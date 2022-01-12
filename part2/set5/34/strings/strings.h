@@ -15,7 +15,6 @@ class Strings
         Strings(char **environLike);
 
         Strings &operator+=(std::string const &rhs);
-        void printStrs() const;
 
         size_t size() const;
         size_t capacity() const;
@@ -35,24 +34,28 @@ inline Strings::Strings(int argc, char **argv)
     d_str(argv, argv + argc)
 {}
 
+inline Strings::Strings(char **environLike)
+: 
+    d_str(0)
+{
+    while (*environLike)
+        d_str.push_back(*environLike++);
+}
 
 inline size_t Strings::size() const
 {
     return d_str.size();
 }
 
-
 inline size_t Strings::capacity() const
 {
     return d_str.capacity();
 }
 
-
 inline std::string const &Strings::at(size_t idx) const
 {
     return d_str[idx];
 }
-
 
 inline std::string &Strings::at(size_t idx)
 {
@@ -65,23 +68,15 @@ inline std::string &Strings::operator[](size_t idx)
     return d_str[idx];
 }
 
-
 inline void Strings::resize(size_t newSize)
 {
     d_str.resize(newSize);
 }
-
 
 inline void Strings::reserve(size_t newCapacity)
 {
     d_str.reserve(newCapacity);
 }
 
-
-inline void Strings::printStrs() const
-{
-    for (auto const &str: d_str)
-        std::cout << str << '\n';
-}
 
 #endif

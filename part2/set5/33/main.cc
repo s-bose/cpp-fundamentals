@@ -1,14 +1,12 @@
-#include <iostream>
-#include <string>
-#include <map>
+#include "main.ih"
 
 int main()
 {
-    std::map<std::string, size_t> smap;
-    std::string word;
-    while (std::cin >> word)
+    map<string, size_t> smap;   // map each string with their frequencies 
+    string word;
+    while (cin >> word)
         ++smap[word];
 
     for (auto const &[key, value]: smap)
-        std::cout << key << ": " << value << '\n';
+        cout << key << ": " << value << '\n';
 }

@@ -1,5 +1,5 @@
-first object line1
-first object line2
+first object #1
+first object #2
 
-second object line1
-second object line2
+second object #1
+second object #2

@@ -12,11 +12,11 @@ class Strings
     std::vector<std::string> d_str;
 
     public:
-        class Wrap;
+        class Wrap;                     // wrapper class for handling COW
         Wrap operator[](size_t idx);
 
         class Wrap
-        {   
+        {                               // store string through smart pointer
             std::shared_ptr<std::string> d_data;
 
             friend Wrap Strings::operator[](size_t idx);
@@ -26,8 +26,9 @@ class Strings
 
 
             public:
+                                                      // handling lvalue
                 std::string &operator=(std::string const &rhs);
-                operator std::string const &() const;
+                operator std::string const &() const; // handling rvalue
                 friend std::ostream &operator<<(std::ostream &out, Strings::Wrap const &obj);
 
             private:
@@ -39,7 +40,6 @@ class Strings
         Strings(char **environLike);
 
         Strings &operator+=(std::string const &rhs);
-        void printStrs() const;
 
         size_t size() const;
         size_t capacity() const;
@@ -53,17 +53,14 @@ class Strings
 
 
 inline Strings::Wrap::Wrap(std::string &str)
-:
+:                       // create fresh new shared_ptr
     d_data(std::shared_ptr<std::string>( new std::string{ str } ))    
 {}
 
-inline Strings::Wrap::operator const std::string &() const
-{
-    return *d_data;
-}
+
 
 inline Strings::Wrap Strings::operator[](size_t idx)
-{
+{                       // return the string wrapped COW Wrapper
     return Strings::Wrap( d_str[idx] );
 }
 
@@ -90,12 +87,6 @@ inline void Strings::reserve(size_t newCapacity)
 inline std::ostream &operator<<(std::ostream &out, Strings::Wrap const &obj)
 {
     return out << static_cast<std::string const &>(obj);
-}
-
-inline void Strings::printStrs() const
-{
-    for (size_t idx = 0; idx != d_str.size(); ++idx)
-        std::cout << d_str[idx] << '\n';
 }
 
 #endif

@@ -16,5 +16,4 @@ int main(int argc, char **argv)
     std::cout << str4.size() << '\n';
     std::cout << str4.at(2) << '\t' << str4[0] << '\n';
     str4[0] = "bose";
-    str4.printStrs();
 }

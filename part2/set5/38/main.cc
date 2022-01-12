@@ -1,11 +1,10 @@
 #include <fstream>
 #include <iostream>
 #include "lines/lines.h"
-#include <iterator>
 
 using namespace std;
 
-extern std::map<Lines, std::vector<std::string>> VecMap;
+extern std::map<Lines const *, std::vector<std::string>> VecMap;
 
 int main(int argc, char **argv)
 {
@@ -18,17 +17,14 @@ int main(int argc, char **argv)
     }
 
     Lines lines1{in};
-    // string str;
-    // getline(in, str);
-    // cout << str << '\n';
     Lines lines2{in};
 
-    // cout << "Lines1's lines:\n";
+    cout << "Lines1's lines:\n";
  
-    // for (string const &line : lines1.get()) // lines1's lines
-    //     cout << line << '\n';
+    for (string const &line : lines1.get()) // lines1's lines
+        cout << line << '\n';
 
-    // cout << "Lines2's lines:\n";
-    // for (string const &line : lines2.get()) // lines2's lines via lines1
-    //     cout << line << '\n';
+    cout << "Lines2's lines:\n";
+    for (string const &line : lines1.get(1)) // lines2's lines via lines1
+        cout << line << '\n';
 }

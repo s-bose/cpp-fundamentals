@@ -1,0 +1,3 @@
+Exercise 32:
+
+Construct a program that prints a sorted list of all different words appearing at its standard input.

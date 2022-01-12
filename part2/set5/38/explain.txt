@@ -1,0 +1,15 @@
+Exercise 38:
+
+Learn to define a class whose data are elsewhere.
+
+In this exercise, class Lines should read lines of text from an istream in its constructor. The instances
+have functions to retrieve line strings for that instance and other instances.
+
+We use a global std::map with Lines pointers as key_type, and vector<string> objects as value_types.
+At the Lines constructor, each line from the stream is put to a local vector until an empty newline (start of 
+new object), and inserted to the map associated with `this' pointer.
+
+To access the n-th Lines obj's contents, we use std::next to iterate n times starting from map::begin() and retrieve
+the corresponding vector.
+
+At destruction, the vector associated to `this' is removed.

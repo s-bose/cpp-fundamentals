@@ -1,14 +1,12 @@
-#include <iostream>
-#include <set>
-
+#include "main.ih"
 
 int main()
 {
-    std::set<std::string> sset;
-    std::string word;
-    while (std::cin >> word)
-        sset.insert(word);
+    set<string> sset;
+    string word;
+    while (cin >> word)
+        sset.insert(word);  // set will contain only unique strings
 
-    for (auto const &word: sset)
-        std::cout << word << '\n';
+    for (auto const &word : sset)
+        cout << word << '\n';
 }

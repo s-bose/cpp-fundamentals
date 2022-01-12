@@ -1,1 +1,3 @@
 Exercise 35:
+
+Same exercise as the previous one, but now we keep the requirement that the strings themselves are reached via pointers. 
