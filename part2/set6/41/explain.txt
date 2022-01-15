@@ -1,0 +1,4 @@
+Exercise 41:
+
+learn to use promotion with generic algorithms and predefined function objects when manipulating basic data types.
+

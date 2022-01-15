@@ -1,4 +1,5 @@
 #include "split.ih"
+#include <sstream>
 
 Split::Split(int &argc, char ***argv)
 : 
@@ -17,3 +18,5 @@ Split::Split(int &argc, char ***argv)
     *argv = d_vec.data();                         // change argv pointer 
     argc = static_cast<int>(d_vec.size());        // to point to the new NTBS array
 }
+
+
