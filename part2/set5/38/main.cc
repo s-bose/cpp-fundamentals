@@ -4,8 +4,6 @@
 
 using namespace std;
 
-extern std::map<Lines const *, std::vector<std::string>> VecMap;
-
 int main(int argc, char **argv)
 {
     ifstream in{argv[1]};

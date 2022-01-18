@@ -1,5 +1,8 @@
 #include "lines.h"
 
-
 using namespace std;
+
+                // extern map mapping each Lines obj pointer to its vector
+extern map< Lines const *, vector<string> > VecMap;
+
 

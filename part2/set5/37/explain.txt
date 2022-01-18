@@ -1,0 +1,30 @@
+Exercise 37:
+
+Change the implementation of class PrivilegedOne that is friends with class NoEntry with private constructors,
+so that vector of NoEntry objects can be constructed in PrivilegedOne.
+
+**
+First Submission
+Extra exercise added to the last submission on Wed, 12 Jan 2022 15:55:53 +0100
+**
+
+
+1. Why did we add that comment? Why doesn't the statement do its job?
+
+> Even though PrivilegedOne is friend of NoEntry, std::vector is not. Thus its unable to access its private
+constructor, which is needed to create a copy from the passed `NoEntry next' in vector::push_back().
+Even if we did manage to push `next' by move and avoid copying, we still have the vector in charge of destruction
+of its data members, which is not possible.
+
+2. Without modifying anything in the class NoEntry, but merely concentrating on PrivilegedOne,
+what must be done to allow objects of this class to store NoEntry objects in its d_noEntry vector?
+
+> We can use unique_ptr to which we can pass a custom deleter function that takes care of the destruction from the
+context of PrivilegedOne.
+We define a private static deleter function `deleterNoEntry' inside PrivilegedOne, that takes a (NoEntry *) pointer and
+calls its destructor all from the friend class context.
+We then change the vector signature to `vector< unique_ptr<NoEntry, void (*)(NoEntry *)> >', the second parameter holds
+the datatype of the deleter function pointer.
+We then construct a unique_ptr object by passing it the address of `next' and the address to `PrivilegedOne::deleterNoEntry'
+and push it to the vector.
+Now the destruction of the unique_ptr objs are handled by the custom deleter function that is allowed to delete NoEntry objs.

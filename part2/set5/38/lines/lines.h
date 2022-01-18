@@ -6,11 +6,6 @@
 #include <string>
 #include <map>
 
-class Lines;
-
-                // extern map mapping each Lines obj pointer to its vector
-extern std::map<Lines const *, std::vector<std::string>> VecMap;
-
 class Lines
 {
     public:

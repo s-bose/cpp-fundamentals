@@ -13,3 +13,7 @@ To access the n-th Lines obj's contents, we use std::next to iterate n times sta
 the corresponding vector.
 
 At destruction, the vector associated to `this' is removed.
+
+Addendum:
+On the previous submission it was noted that the extern VecMap object was publicly accessible.
+Now the extern VecMap object is declared in the internal header file and thus only accessible to the source files of Lines class.

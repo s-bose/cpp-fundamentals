@@ -17,6 +17,7 @@ Split::Split(int &argc, char ***argv)
 
     *argv = d_vec.data();                         // change argv pointer 
     argc = static_cast<int>(d_vec.size());        // to point to the new NTBS array
+    d_vec.push_back(nullptr);                     // null-terminate for argv[argc] edge-case
 }
 
 

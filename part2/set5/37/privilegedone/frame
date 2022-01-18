@@ -1,0 +1,6 @@
+//#define XERR
+#include "privilegedone.ih"
+
+privilegedOne::
+{
+}
