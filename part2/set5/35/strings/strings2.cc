@@ -5,5 +5,5 @@ Strings::Strings(char **environLike)
     d_str(0)
 {
     while (*environLike)
-        d_str.push_back( *environLike++ );
+        d_str.push_back( new string{*environLike++} );
 }

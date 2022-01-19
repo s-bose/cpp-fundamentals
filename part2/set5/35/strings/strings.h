@@ -4,12 +4,11 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include <memory>
 
 
 class Strings
 {
-    std::vector<std::string> d_str;
+    std::vector< std::string * > d_str;
 
     public:
         class Wrap;                     // wrapper class for handling COW
@@ -17,27 +16,24 @@ class Strings
 
         class Wrap
         {                               // store string through smart pointer
-            std::shared_ptr<std::string> d_data;
+            std::string *d_data;
 
             friend Wrap Strings::operator[](size_t idx);
 
             Wrap() = default;
-            Wrap(std::string &str);
-
+            Wrap(std::string *pstr);
 
             public:
                                                       // handling lvalue
                 std::string &operator=(std::string const &rhs);
                 operator std::string const &() const; // handling rvalue
                 friend std::ostream &operator<<(std::ostream &out, Strings::Wrap const &obj);
-
-            private:
-                void swap(Wrap &other);
         };
 
         Strings() = default;
         Strings(int argc, char **argv);
         Strings(char **environLike);
+        ~Strings();
 
         Strings &operator+=(std::string const &rhs);
 
@@ -52,16 +48,16 @@ class Strings
 };
 
 
-inline Strings::Wrap::Wrap(std::string &str)
+inline Strings::Wrap::Wrap(std::string *pstr)
 :                       // create fresh new shared_ptr
-    d_data(std::shared_ptr<std::string>( new std::string{ str } ))    
+    d_data(pstr)    
 {}
 
 
 
 inline Strings::Wrap Strings::operator[](size_t idx)
 {                       // return the string wrapped COW Wrapper
-    return Strings::Wrap( d_str[idx] );
+    return Strings::Wrap{ d_str[idx] };
 }
 
 inline size_t Strings::size() const
