@@ -7,9 +7,7 @@ int main(int argc, char **argv)
 {
     Strings strings(argc, argv);
 
-    string strCpy = strings[1];
-    // strCpy = "hello world";
-    cout << strCpy << '\n';
-    
-    // cout << strings[0] << '\n';
+    strings[1] = "changed";
+    cout << strings[1] << '\n';    
+    // cout << (strings[0] = "neue Worter") << '\n';
 }

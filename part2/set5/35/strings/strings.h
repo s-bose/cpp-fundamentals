@@ -4,7 +4,6 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include <memory>
 
 
 class Strings
@@ -17,7 +16,7 @@ class Strings
 
         class Wrap
         {                               // store string through smart pointer
-            std::shared_ptr<std::string> d_data;
+            std::string *d_data;
 
             friend Wrap Strings::operator[](size_t idx);
 
@@ -34,7 +33,7 @@ class Strings
         Strings() = default;
         Strings(int argc, char **argv);
         Strings(char **environLike);
-        // ~Strings();
+        ~Strings();
 
         Strings &operator+=(std::string const &rhs);
 
@@ -51,8 +50,9 @@ class Strings
 
 inline Strings::Wrap::Wrap(std::string *pstr)
 :                       // create fresh new shared_ptr
-    d_data(std::shared_ptr<std::string>( pstr ))    
+    d_data(pstr)    
 {}
+
 
 
 inline Strings::Wrap Strings::operator[](size_t idx)

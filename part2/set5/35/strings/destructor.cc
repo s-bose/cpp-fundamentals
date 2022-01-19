@@ -1,7 +1,7 @@
-// #include "strings.ih"
+#include "strings.ih"
 
-// Strings::~Strings()
-// {
-//     for (string const *ptr : d_str)
-//         delete ptr;
-// }
+Strings::~Strings()
+{
+    for (string const *ptr : d_str)
+        delete ptr;
+}
