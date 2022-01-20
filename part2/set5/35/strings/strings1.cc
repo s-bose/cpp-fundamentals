@@ -2,8 +2,8 @@
 
 Strings::Strings(int argc, char **argv)
 :
-    d_str(0)
+    d_data(0)
 {
     for (size_t idx = 0, end = argc; idx != end; ++idx)
-        d_str.push_back( new string{argv[idx]} );
+        d_data.push_back(Wrapper(argv[idx]));
 }

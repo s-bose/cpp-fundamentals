@@ -10,8 +10,7 @@ class Split
     public:
                                 // ref to argc & ptr to argv to
                                 // modify their values in main
-        Split(int &argc, char ***argv);
-
+        Split(int &argc, char **&argv);
 };
 
 #endif

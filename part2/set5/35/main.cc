@@ -6,8 +6,8 @@ using namespace std;
 int main(int argc, char **argv)
 {
     Strings strings(argc, argv);
+    Strings strings1(strings);
 
     strings[1] = "changed";
-    cout << strings[1] << '\n';    
-    // cout << (strings[0] = "neue Worter") << '\n';
+
 }

@@ -4,36 +4,20 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <memory>
 
+#include "../wrapper/wrapper.h"
 
 class Strings
 {
-    std::vector< std::string * > d_str;
+    std::vector<Wrapper> d_data;    // vector of pointers with COW wrapper
 
     public:
-        class Wrap;                     // wrapper class for handling COW
-        Wrap operator[](size_t idx);
-
-        class Wrap
-        {                               // store string through smart pointer
-            std::string *d_data;
-
-            friend Wrap Strings::operator[](size_t idx);
-
-            Wrap() = default;
-            Wrap(std::string *pstr);
-
-            public:
-                                                      // handling lvalue
-                std::string &operator=(std::string const &rhs);
-                operator std::string const &() const; // handling rvalue
-                friend std::ostream &operator<<(std::ostream &out, Strings::Wrap const &obj);
-        };
+        Wrapper &operator[](size_t idx);
 
         Strings() = default;
         Strings(int argc, char **argv);
         Strings(char **environLike);
-        ~Strings();
 
         Strings &operator+=(std::string const &rhs);
 
@@ -42,47 +26,42 @@ class Strings
 
         void resize(size_t newSize);
         void reserve(size_t newCapacity);
-
+        void print() const;
 
     private:
 };
 
 
-inline Strings::Wrap::Wrap(std::string *pstr)
-:                       // create fresh new shared_ptr
-    d_data(pstr)    
-{}
 
-
-
-inline Strings::Wrap Strings::operator[](size_t idx)
-{                       // return the string wrapped COW Wrapper
-    return Strings::Wrap{ d_str[idx] };
+inline Wrapper &Strings::operator[](size_t idx) 
+{
+    return d_data[idx];
 }
 
 inline size_t Strings::size() const
 {
-    return d_str.size();
+    return d_data.size();
 }
 
 inline size_t Strings::capacity() const
 {
-    return d_str.capacity();
+    return d_data.capacity();
 }
 
 inline void Strings::resize(size_t newSize)
 {
-    d_str.resize(newSize);
+    d_data.resize(newSize);
 }
 
 inline void Strings::reserve(size_t newCapacity)
 {
-    d_str.reserve(newCapacity);
+    d_data.reserve(newCapacity);
 }
 
-inline std::ostream &operator<<(std::ostream &out, Strings::Wrap const &obj)
+inline void Strings::print() const
 {
-    return out << static_cast<std::string const &>(obj);
+    for (auto const &wrap : d_data)
+        std::cout << wrap << '\n';
 }
 
 #endif

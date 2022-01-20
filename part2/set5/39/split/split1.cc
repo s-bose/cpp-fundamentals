@@ -1,13 +1,12 @@
 #include "split.ih"
-#include <sstream>
 
-Split::Split(int &argc, char ***argv)
+Split::Split(int &argc, char **&argv)
 : 
     d_vec(0)
 {
     for (int idx = 0; idx != argc; ++idx)
     {
-        char *tokens = strtok((*argv)[idx], " "); // split by whitespace
+        char *tokens = strtok(argv[idx], " "); // split by whitespace
         while (tokens)
         {
             d_vec.push_back(tokens);
@@ -15,9 +14,10 @@ Split::Split(int &argc, char ***argv)
         }
     }
 
-    *argv = d_vec.data();                         // change argv pointer 
-    argc = static_cast<int>(d_vec.size());        // to point to the new NTBS array
-    d_vec.push_back(nullptr);                     // null-terminate for argv[argc] edge-case
+    argc = static_cast<int>(d_vec.size());    // new arg count
+
+    d_vec.push_back(nullptr);                 // extra space for argv[argc] == 0
+    argv = d_vec.data();                      // change argv pointer 
 }
 
 
