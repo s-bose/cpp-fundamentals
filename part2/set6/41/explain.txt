@@ -1,4 +1,4 @@
 Exercise 41:
 
 learn to use promotion with generic algorithms and predefined function objects when manipulating basic data types.
-
+Use sort to sort the command line's arguments twice, once ascending, once descending without storing them in a vector.

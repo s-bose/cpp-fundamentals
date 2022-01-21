@@ -3,33 +3,36 @@
 #include <iterator>
 #include <functional>
 
+
+using namespace std;
+
 int main(int argc, char **argv)
 {
-    std::sort
+    sort       // sort ascending
         (
         argv,
         argv + argc,
-        std::less<std::string>{}
+        less<string>{}
         );
 
-    std::copy
+    copy       // display
         (
          argv,
          argv + argc,
-         std::ostream_iterator<std::string>{std::cout, "\n"}
+         ostream_iterator<string>{cout, "\n"}
         );
 
-    std::sort
+    sort       // sort descending
         (
          argv,
          argv + argc,
-         std::greater<std::string>{}
+         greater<string>{}
         );
 
-    std::copy
+    copy       // display
         (
          argv,
          argv + argc,
-         std::ostream_iterator<std::string>{std::cout, "\n"}
+         ostream_iterator<string>{cout, "\n"}
         );
 }

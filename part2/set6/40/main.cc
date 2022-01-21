@@ -1,32 +1,37 @@
 #include <iostream>
 #include <vector>
-#include <cstdlib>
 #include <iterator>
 #include <algorithm>
 
+using namespace std;
+
 int main(int argc, char **argv)
 {
-    size_t count = std::stoul(argv[1]);
-    size_t endRandom = std::stoul(argv[2]) + 1;
-    size_t lookup = std::stoul(argv[3]);
+    size_t count     = stoul(argv[1]);
+    size_t endRandom = stoul(argv[2]) + 1;  // max random, inclusive
+    size_t lookup    = stoul(argv[3]);
 
-    std::vector<size_t> d_vec(count);
-    std::generate(d_vec.begin(), d_vec.end(), 
+    vector<size_t> d_vec(count);
+    generate(d_vec.begin(), d_vec.end(),    // fill vector with random ints
             [endRandom]()
             {
-                return std::rand() % endRandom;
+                return rand() % endRandom;
             });
 
-    std::copy(d_vec.begin(), d_vec.end(), std::ostream_iterator<size_t>{std::cout, " "});
-    std::cout << '\n';
+    copy(d_vec.begin(), d_vec.end(),        // print vector
+        ostream_iterator<size_t>{cout, " "});
+    cout << '\n';
+    
+                                            // find first value exceeding `lookup' 
+    auto iterFound = find_if(d_vec.begin(), d_vec.end(), 
+                            [lookup](size_t value)
+                            {
+                                return value > lookup;
+                            });
 
-    auto iterFound = std::find_if(d_vec.begin(), d_vec.end(), 
-            [lookup](size_t value)
-            {
-                return value > lookup;
-            });
     if (iterFound == d_vec.end())
-        std::cout << "No random value exceeeds " << lookup << '\n';
+        cout << "No random value exceeeds " << lookup << '\n';
     else
-        std::cout << "The first value exceeding " << lookup << " is at index " << (iterFound - d_vec.begin()) << '\n';
+        cout << "The first value exceeding " << lookup 
+             << " is at index " << (iterFound - d_vec.begin()) << '\n';
 }
