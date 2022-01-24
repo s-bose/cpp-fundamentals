@@ -1,0 +1,11 @@
+Exercise 46:
+
+Construct a program defining a vector<unsigned> having 10 elements. Use iota to fill these elements with, subsequently, the values
+0, 2, 4, 6, 8, 10, 12, 14, 16, 18.
+
+> We create a wrapper class `UEven' that wraps an unsigned value.
+It overrides `operator++' to increment the data twice when called, resulting in an even number.
+It also has a conversion op `operator unsigned const &()' which returns the inner unsigned data when used as rvalue.
+When called with `std::iota', the initial value is given as a `UEven' obj initialized to zero. 
+Thus, when filling up the values of vector, the `operator++' of `UEven' is called, and successive even numbers are inserted
+by rvalue conversion operator to the vector fields.

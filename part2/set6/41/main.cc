@@ -10,9 +10,9 @@ int main(int argc, char **argv)
 {
     sort       // sort ascending
         (
-        argv,
-        argv + argc,
-        less<string>{}
+         argv,
+         argv + argc,
+         less<string>{}
         );
 
     copy       // display

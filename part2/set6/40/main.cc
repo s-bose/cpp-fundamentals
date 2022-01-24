@@ -22,7 +22,8 @@ int main(int argc, char **argv)
         ostream_iterator<size_t>{cout, " "});
     cout << '\n';
     
-                                            // find first value exceeding `lookup' 
+                                            // find first value exceeding 
+                                            // `lookup' 
     auto iterFound = find_if(d_vec.begin(), d_vec.end(), 
                             [lookup](size_t value)
                             {

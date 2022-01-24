@@ -1,0 +1,68 @@
+Exercise 44:
+
+1. Consider this program:
+
+#include <memory>
+
+int main()
+{
+    std::unique_ptr<char>(new char[10]);
+}
+
+1.1. What's wrong with this program?
+
+> unique_ptr for a single char pointer is used for a dynamically allocated array of chars.
+
+1.2. Why?
+
+> This way, upon exit the unique_ptr will dellocate the pointer to the first char using `delete',
+the remainder of the memory will not be dellocated, causing a memory leak.
+
+1.3. How to fix it?
+
+> use `char[]' as the Type-specifier.
+
+`std::unique_ptr<char[]>(new char[10]);'
+
+This ensures that the unique_ptr destructor calls `delete[]' instead of `delete' and dellocates the entire
+array.
+
+
+2. Consider this program:
+
+int main() 
+{ 
+    std::unique_ptr<string *>(new string *[10]); 
+    // assign dynamically allocated strings to the 10 pointers 
+} 
+
+2.1. What's wrong with this program?
+
+> Similar to the last example, the Type is for a single pointer to `string*' but we allocate an array of `string*'.
+Additionally, if we use `string*[]' array-type it still results in leaky memory.
+
+2.2. Why?
+
+> Using `string*[]' as Type-specifier only makes unique_ptr call delete[] on the pointer upon destruction.
+The individual strings allocated within the array don't get dellocated, causing a memory leak.
+
+2.3. How to fix it?
+
+> We can create a custom deleter function/function object as below.
+
+    struct Deleter
+    {
+        size_t d_size;
+         void operator()(string **pstr) const
+        {
+            for (size_t idx = 0; idx != d_size; ++idx)
+                delete pstr[idx];
+            delete[] pstr;
+        }
+    };
+
+    unique_ptr<string*, Deleter>(new string*[10], Deleter{ 10 });
+
+This ensures that the `operator()' of `Deleter' is calleed with 10 element size which dellocates each string* object
+and then dellocates the entire array. 
+
