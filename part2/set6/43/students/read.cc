@@ -13,7 +13,8 @@ void Students::read(string const &filename)
 
     while (getline(ifs, line))
     {
-        istringstream ss(line);
+        istringstream ss(line);     // process each word in line using stringstream
+                                    // read four words
         if (ss >> fname >> lname >> number >> grade)
         {
             d_vec.push_back({fname, lname, number, grade });
@@ -21,6 +22,7 @@ void Students::read(string const &filename)
         else
         {
             istringstream ss(line);
+                                    // read five words
             if (ss >> fname >> mname >> lname >> number >> grade)
             {
                 d_vec.push_back({fname + " " + mname, lname, number, grade});

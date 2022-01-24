@@ -3,8 +3,10 @@
 void Students::writeNrs(ostream &out)
 {
     vector<size_t> studentNumbers(d_vec.size());
+                // auxiliary vector of indices
     iota(studentNumbers.begin(), studentNumbers.end(), 0);
-    sort(
+
+    sort(       // sort indices based on studentNr
         studentNumbers.begin(), studentNumbers.end(),
         [&](size_t idxL, size_t idxR)
         {
@@ -12,7 +14,7 @@ void Students::writeNrs(ostream &out)
         }
     );
 
-    for_each(
+    for_each(   // students sorted by studentNr
         studentNumbers.begin(), studentNumbers.end(),
         [&](size_t idx)
         {

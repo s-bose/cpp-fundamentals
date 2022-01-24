@@ -8,18 +8,17 @@ void Students::writeNames(ostream &out)
         [&](Student const &lhs, Student const &rhs)
         {
             return strcasecmp(
-                lhs.d_lastName.c_str(),
+                lhs.d_lastName.c_str(), // compare C-strings
                 rhs.d_lastName.c_str()
-            ) < 0;
+            ) < 0;                      // sort last names case-insensitively
         }
     );
 
     for_each(
-        d_vec.begin(), d_vec.end(),
+        d_vec.begin(), d_vec.end(),     // write sorted records to ostream
         [&out](Student const &student)
         {
             out << student.d_name << ' ' << student.d_lastName <<
-            ' ' << student.d_studentNr << ' ' << student.d_grade << '\n';  
-        }
-    );
+            ' ' << student.d_studentNr << ' ' << student.d_grade << '\n';
+        });
 }

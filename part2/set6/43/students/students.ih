@@ -1,8 +1,8 @@
 #include "students.h"
-#include <fstream>
-#include <sstream>
-#include <cstring>
-#include <algorithm>
-#include <numeric>
+#include <fstream>   // files
+#include <sstream>   // stringstream
+#include <cstring>   // strcasecmp
+#include <algorithm> // sort & for_each   
+#include <numeric>   // iota
 
 using namespace std;

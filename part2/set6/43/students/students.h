@@ -19,7 +19,7 @@ class Students
     std::vector<Student> d_vec;
 
     public:
-        void read(std::string const &fname);
+        void read(std::string const &filename);
         void writeNames(std::ostream &out);
         void writeNrs(std::ostream &out);
 };

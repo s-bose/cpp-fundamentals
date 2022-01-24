@@ -1,0 +1,13 @@
+Exercise 43:
+
+Learn to sort fields in POD or comparable structs/classes.
+
+In this exercise, we have to sort a vector of Student POD struct first by their last names, case-insensitively.
+Which we are able to do by calling `std::sort' with a lambda function that uses `std::strcasecmp' C-function to compare two strings
+case-insensitively.
+
+Then we indirectly sort the vector by manipulating an auxiliary vector containing the indices of its elements, and sorting
+the indices according to the student Number.
+
+**First Submission**
+submitted Fri, 21 Jan 2022 10:41:36 +0100

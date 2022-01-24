@@ -1,0 +1,96 @@
+Purpose of this exercise: learn to recognize a situation where lambda
+functions may be used.
+
+Lambda functions are mainly used with the for_each, find_if, count_if and
+comparable generic algorithms (GAs). In general they can be used for those GAs
+that accept function objects.
+
+We start this exercise by introducing a class Vstring derived from the
+std::vector<std::string> container. Its basic setup is as follows:
+        
+    class Vstring: public std::vector<std::string>
+    {
+        public:
+            typedef std::map<char, size_t> CharMap;
+    
+            Vstring(std::istream &in);
+            
+            size_t count(CharMap &cmap, bool (*accept)(char, CharMap &));
+
+        private:
+            static void countChar(std::string const &str, CharMap &cmap,
+                                  bool (*accept)(char, CharMap &));
+    };
+        
+    Its main functionality consists of its member count counting the
+number of characters in all Vstring's strings for which its accept
+function, passed as its second parameter, returns true. 
+
+Thus, by providing a (free) accept function users can determine what
+type of characters are counted.
+
+Furthermore, a map of char (index) by size_t (value) counts the
+frequencies of individual characters for which accept returns true. 
+
+An example of such an accept function is the following, which can be used to
+count vowels:
+        
+    bool vowels(char c, Vstring::CharMap &cmap)
+    {
+        if (string("aeiuoAEIOU").find(c) != string::npos)
+        {
+            ++cmap[c];
+            return true;
+        }
+        return false;
+    }
+        
+
+
+    o  Use the copy GA to initialize the Vstring object with all
+strings that are extracted from its istream stream parameter. E.g., when
+the constructed program is called a.out the following should store three
+strings:
+                echo one two three | a.out
+
+o  Implement count using for_each and a lambda function. It
+must visit each of the strings stored in Vstring, returning the total
+number of accepted characters, storing the frequencies of accepted characters
+in its cmap parameter. It may be assumed that cmap initially refers to
+an empty map.
+
+o  Implement countChar, using a lambda function and a GA that's
+suited for countChar's task: pass all characters of one string to the
+accept function, adding the total number of accepted characters of that
+string to the over-all total. Note that countChar has return type
+void.
+
+o  The main function can be implemented based on the following
+setup: 
+        
+    int main()
+    {
+        Vstring vstring(cin);
+        Vstring::CharMap vmap;
+    
+        cout << "Vowels: " << vstring.count(vmap, vowels) << '\n';
+    
+        // Display all elements of vmap
+    }
+        
+    To display all elements of vmap use an appropriate GA (and lambda
+function) executing the following cout statement, where value is a
+reference to a value of the decltype(*vmap.begin()) type.
+        
+    cout << value.first << ": " << value.second << '\n';
+        
+
+o  Make sure that context (closure) variables are passed to the lambda
+function in the appropriate way. Usually as references, but don't use
+references when that's pointless.
+
+o  
+    Construct the program and show its output when processing 
+    this plain text version of this exercise.  For
+your information: it contains 819 vowels.
+
