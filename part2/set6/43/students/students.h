@@ -11,7 +11,7 @@ struct Student
     std::string d_name;
     std::string d_lastName;
     size_t      d_studentNr;
-    float       d_grade;
+    double      d_grade;
 };
 
 class Students

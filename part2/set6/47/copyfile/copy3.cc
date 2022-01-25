@@ -18,7 +18,4 @@ void CopyFile::copyfile_3(string const &src, string const &dest)
             istreambuf_iterator<char>{},
             ostreambuf_iterator<char>{out}
         );
-
-    in.close();
-    out.close();
 }

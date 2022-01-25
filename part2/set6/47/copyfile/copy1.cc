@@ -9,7 +9,4 @@ void CopyFile::copyfile_1(string const &src, string const &dest)
     ifstream in{src, ios::binary};
     ofstream out{dest, ios::binary};
     out << in.rdbuf();
-
-    in.close();
-    out.close();
 }

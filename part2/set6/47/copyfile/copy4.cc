@@ -12,13 +12,12 @@ void CopyFile::copyfile_4(string const &src, string const &dest)
     ofstream out{dest, ios::binary};
 
     in.seekg(0, ios::end);
-    size_t size = in.tellg();
-    in.seekg(0);
+    istream::pos_type size = in.tellg();
+    in.seekg(0, ios::beg);
 
     char *buffer = new char[size];
-    in.read(buffer, size);
-    out.write(buffer, size);
+    in.read(buffer, size * sizeof(char));
+    out.write(buffer, size * sizeof(char));
 
-    in.close();
-    out.close();
+    delete[] buffer;
 }

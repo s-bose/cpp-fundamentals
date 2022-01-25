@@ -13,7 +13,4 @@ void CopyFile::copyfile_2(string const &src, string const &dest)
     string temp;
     while (getline(in, temp))
         out << temp << '\n';
-
-    in.close();
-    out.close();
 }
