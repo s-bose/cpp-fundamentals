@@ -8,4 +8,5 @@ copyfile/copy2.cc
 copyfile/copy3.cc
 copyfile/copy4.cc
 copyfile/copy5.cc
+copyfile/copy6.cc
 main.cc

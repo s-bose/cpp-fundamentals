@@ -6,3 +6,6 @@ Addendum:
 
 In the previous attempt, the fstream objects used for reading/writing the files were being manually closed, which is unnecessary.
 The file handlers automatically call their destructors which release all their resources when they go out of scope.
+In addition, one implementation using char buffer previously used the full-length of the input stream which is now changed to use
+a fixed-size buffer.
+A new implementation has been added to copy using `get' & `put' one char at-a-time.

@@ -13,4 +13,4 @@ by rvalue conversion operator to the vector fields.
 Addendum:
 
 In the previous attempt, the increment op returned the inner unsigned value itself, whereas it should return the current UEven object.
-The conversion to `unsigned' is already being done by seperate conversion operator.
+The conversion to `unsigned' is already being done by seperate rvalue conversion operator.
