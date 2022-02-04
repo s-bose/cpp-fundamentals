@@ -1,0 +1,11 @@
+#include <iostream>
+#include <vector>
+#include <thread>
+#include <mutex>
+#include <shared_mutex>
+#include "tsoswrap/tsoswrap.h"
+
+using namespace std;
+
+void f1(int ix);
+void f2(int ix);

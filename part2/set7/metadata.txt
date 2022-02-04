@@ -1,5 +1,5 @@
 Set: Set 7
 
-Rater: 
+Rater: RC
 
 Authors: Albert Campaña, David Vives, Shiladitya Bose, Julia Walczyńska

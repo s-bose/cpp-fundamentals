@@ -1,0 +1,13 @@
+Exercise 54:
+
+Learn to sort out the mess that output may become in the face of threads.
+
+METHOD 1 is used. In order to make all insertions to a TSosWrap separate from other TSosWrap, we make
+use of a shared_mutex.
+
+TSosWrap has a public static shared_mutex instance. Before inserting, f2 tries to acquire a unique lock on the
+shared_mutex, and if successful, it will write its line into the stream uninterrupted, then f1 similarly writes
+its lines uninterrupted, finally the lock is released (RAII) for other threads so no conflict arises.
+
+**First Submission**
+Submitted Tue, 01 Feb 2022 19:11:32 +0100
