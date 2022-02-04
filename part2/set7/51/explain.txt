@@ -1,0 +1,6 @@
+Exercise 51:
+
+Design a program that expects the name of an output file and a text. Open the output file, and run a thread calling the Handler's shift member.
+Do this in two different ways: 
+    * first by defining a Handler object in main and then passing it to a thread 
+    * second, by running a thread that itself defines a Handler object

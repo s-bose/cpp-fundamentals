@@ -1,0 +1,9 @@
+#include "consumer.h"
+#include "../storage/storage.h"
+
+#include <string>
+#include <fstream>
+
+
+using namespace std;
+

@@ -7,13 +7,7 @@ using namespace std;
 using namespace chrono;
 
 
-void usage()
-{
-     cout << "Usage: a.out [timedelta]\n"
-             "timedelta: integer, followed by literal"
-             " 's'|'m'|'h' (second|minute|hour)\n"; 
-}
-
+void usage();
 
 int main(int argc, char **argv)
 {
@@ -39,30 +33,37 @@ int main(int argc, char **argv)
           return 1;
      }
 
-     time_point actualTime = system_clock::now();
+     time_point const actualTime = system_clock::now();
      time_t printTime = system_clock::to_time_t(actualTime);
-                                        // print local time
-     cout << "local: " 
-          <<  put_time(localtime(&printTime), "%Y-%m-%d %X") << '\n';
-                                        // print UTC time
-     cout << "UTC:   " 
-          <<  put_time(gmtime(&printTime), "%Y-%m-%d %X") << '\n';
 
-     time_t addTime = system_clock::to_time_t(actualTime + shift); // add time
-     time_t subTime = system_clock::to_time_t(actualTime - shift);
+     cout << "local: "                  // print local time
+          << put_time(localtime(&printTime), "%Y-%m-%d %X") << '\n'
+          << "UTC:   "                  // print UTC time
+          << put_time(gmtime(&printTime), "%Y-%m-%d %X") << '\n';
+
+                                        // add time
+     time_t addTime = system_clock::to_time_t(actualTime + shift);
+                                        // subtract time
+     time_t subTime = system_clock::to_time_t(actualTime - shift); 
     
 
-                                        // print local added time
-     cout << "Added time\n" << "local: " 
-          <<  put_time(localtime(&addTime), "%Y-%m-%d %X") << '\n';
-                                        // print UTC added time
-     cout << "UTC:   " 
-          <<  put_time(gmtime(&addTime), "%Y-%m-%d %X") << '\n';
+                                       
+     cout << "Added time\n" 
+          << "local: "                  // print local added time
+          <<  put_time(localtime(&addTime), "%Y-%m-%d %X") << '\n'
+          << "UTC:   "                  // print UTC added time
+          << put_time(gmtime(&addTime), "%Y-%m-%d %X") << '\n';
 
-
-     cout << "Subtracted time\n" << "local: "
-          << put_time(localtime(&subTime), "%Y-%m-%d %X") << '\n';
-     // print UTC subtracted time
-     cout << "UTC:   "
+     cout << "Subtracted time\n"
+          << "local: "                  // print local subtracted time
+          << put_time(localtime(&subTime), "%Y-%m-%d %X") << '\n'
+          << "UTC:   "                  // print UTC subtracted time
           << put_time(gmtime(&subTime), "%Y-%m-%d %X") << '\n';
+}
+
+void usage()
+{
+     cout << "Usage: a.out [timedelta]\n"
+             "timedelta: integer, followed by literal"
+             " 's'|'m'|'h' (second|minute|hour)\n";
 }

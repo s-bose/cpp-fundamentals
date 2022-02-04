@@ -1,1 +1,6 @@
 Exercise 49:
+
+This exercise is about learning to apply basic multi-threading. 
+We create a thread that print a dot each second and let it run in the background by detaching it,
+while the main thread calculates prime numbers via the sieve method.
+

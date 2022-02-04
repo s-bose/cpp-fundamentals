@@ -1,0 +1,6 @@
+//#define XERR
+#include "consumer.ih"
+
+Consumer::
+{
+}

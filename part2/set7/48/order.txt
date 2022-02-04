@@ -1,2 +1,7 @@
 explain.txt
+main.ih
 main.cc
+sieve.cc
+printDots.cc
+printResults.cc
+usage.cc

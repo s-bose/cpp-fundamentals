@@ -7,7 +7,8 @@
 class Storage
 {
     static std::once_flag   s_once;
-    static Storage          *s_storage;
+    static Storage          *s_storage; // singleton ptr
+    
     std::queue<std::string> d_queue;
     std::mutex              d_mutex;
     bool                    d_finished;
@@ -18,7 +19,7 @@ class Storage
 
         void push(std::string const &str);
         std::string pop();
-        bool isFinished() const;
+        bool finished() const;
         bool empty() const;
         void finish();
         
@@ -33,7 +34,7 @@ inline Storage::Storage()
 {}
 
 
-inline bool Storage::isFinished() const
+inline bool Storage::finished() const
 {
     return d_finished;
 }

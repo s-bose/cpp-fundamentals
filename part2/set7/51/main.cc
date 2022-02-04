@@ -1,15 +1,6 @@
 #include "main.ih"
 
-void runner1(Handler &handler, ostream &out, string const &text)
-{
-    handler.shift(out, text);           // run external handler
-}
 
-void runner2(ostream &out, string const &text)
-{
-    Handler handlerLocal;
-    handlerLocal.shift(out, text);      // run local handler
-}
 
 int main(int argc, char **argv)
 {

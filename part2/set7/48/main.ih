@@ -1,0 +1,17 @@
+#include <iostream>
+#include <iomanip>
+#include <iterator>
+#include <chrono>
+#include <vector>
+#include <thread>
+
+using namespace std;
+using namespace chrono;
+
+vector<size_t> sieve(size_t n_primes);
+void printDots();
+void printResults(time_point<system_clock> const &t_start, 
+                 time_point<system_clock> const &t_end,
+                 size_t n_primes);
+
+void usage();

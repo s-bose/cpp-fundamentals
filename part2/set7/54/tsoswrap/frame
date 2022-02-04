@@ -1,0 +1,6 @@
+//#define XERR
+#include "tsoswrap.ih"
+
+TSosWrap::
+{
+}

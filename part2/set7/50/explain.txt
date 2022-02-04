@@ -1,5 +1,5 @@
 Exercise 50:
 
-Learn to use chrono clock facilities. We use the now function plus localtime() (for local time) and gmtime (for utc time) and we print it using put_time.
-
-Then we add the input as seconds, minuts and hours to the actual time and print it again.
+Learn to use chrono clock facilities. 
+Receive an argument: an integral number to which an s, m, h (for seconds, minutes, hours) is appended. 
+Add (or subtract) the specified time (from now), and display the resulting time.
