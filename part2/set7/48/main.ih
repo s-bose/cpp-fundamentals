@@ -4,12 +4,12 @@
 #include <chrono>
 #include <vector>
 #include <thread>
+#include "dots/dots.h"
 
 using namespace std;
 using namespace chrono;
 
 vector<size_t> sieve(size_t n_primes);
-void printDots();
 void printResults(time_point<system_clock> const &t_start, 
                  time_point<system_clock> const &t_end,
                  size_t n_primes);

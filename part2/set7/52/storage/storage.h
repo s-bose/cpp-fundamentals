@@ -5,26 +5,23 @@
 #include <mutex>
 
 class Storage
-{
-    static std::once_flag   s_once;
-    static Storage          *s_storage; // singleton ptr
-    
+{   
     std::queue<std::string> d_queue;
     std::mutex              d_mutex;
     bool                    d_finished;
 
     public:
-        static Storage *instance();
+        Storage();
         Storage(Storage const &other) = delete;
 
         void push(std::string const &str);
         std::string pop();
+
         bool finished() const;
         bool empty() const;
         void finish();
         
     private:
-        Storage();
 };
 
 

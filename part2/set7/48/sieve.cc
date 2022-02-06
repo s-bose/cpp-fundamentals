@@ -15,8 +15,10 @@ vector<size_t> sieve(size_t n_primes)
             if (next % sieveVec[idx] == 0)
                 notPrime = true;
 
-        if (!notPrime)                            // push next prime number
+        if (!notPrime)    
+        {
             sieveVec.push_back(next);
+        }                        // push next prime number
 
         ++next;
     }
