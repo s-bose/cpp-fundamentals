@@ -1,14 +1,18 @@
 #include "consumer.ih"
 
-void Consumer::operator()()
+void Consumer::operator()(Storage &storage)
 {
-    ofstream out{ d_file };
-    Storage *storage = Storage::instance();
-
-    string line;
-    while (!(line = storage->pop()).empty())
+    ofstream out{d_file};
+    do
     {
-        ++d_size;
-        out << line << '\n';
-    }   
+        string line;
+        if (storage.pop(line))
+        {
+            out << line << '\n';
+            ++d_size;
+        }
+
+        else
+            this_thread::yield();
+    } while (not storage.finished());
 }

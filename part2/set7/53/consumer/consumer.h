@@ -1,6 +1,8 @@
 #ifndef INCLUDED_CONSUMER_
 #define INCLUDED_CONSUMER_
+
 #include <string>
+#include "../storage/storage.h"
 
 class Consumer
 {
@@ -11,7 +13,7 @@ public:
     Consumer(std::string const &file);
     size_t size() const;
     std::string const &filename() const;
-    void operator()();
+    void operator()(Storage &storage);
 };
 
 

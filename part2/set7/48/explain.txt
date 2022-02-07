@@ -6,6 +6,6 @@ while the main thread calculates prime numbers via the sieve method.
 
 **Addendum**
 In the previous submission, we detached the thread running the dots, which was
-unnecessary. Instead, we  reated a function object with a stop flag that is set by
+unnecessary. Instead, we created a function object with a stop flag that is set by
 the main thread after prime finding to stop printing the dots and join the dots thread.
 

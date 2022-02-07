@@ -1,13 +1,12 @@
 #include "storage.ih"
 
-string Storage::pop()
+bool Storage::pop(string &line)
 {
     lock_guard<mutex> lg(d_mutex);
-    
     if (d_queue.empty())
-        throw "pop() called on empty queue";
-    
-    string line = string{ d_queue.front() };
+        return false; // return & release lock if empty
+
+    line = move(d_queue.front());
     d_queue.pop();
-    return line;
+    return true;      // save front to line & return normally
 }

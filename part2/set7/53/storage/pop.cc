@@ -1,16 +1,12 @@
 #include "storage.ih"
 
-string Storage::pop()
+bool Storage::pop(string &line)
 {
-    unique_lock<mutex> ul(d_mutex);
-    while (d_queue.empty())
-    {
-        if (d_finished)
-            return string{}; // return empty str to signal the end
+    lock_guard<mutex> lg(d_mutex);
+    if (d_queue.empty())
+        return false;   // return & release lock if empty
     
-        d_cond.wait(ul);     // wait to acquire lock
-    }
-    string line = string{ d_queue.front() };
-    d_queue.pop();           // retrieve a copy of front & pop
-    return line;
+    line = move(d_queue.front());
+    d_queue.pop();
+    return true;        // save front to line & return normally
 }

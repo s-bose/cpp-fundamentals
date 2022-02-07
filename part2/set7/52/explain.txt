@@ -2,7 +2,7 @@ Exercise 52:
 
 Learn to design a simple producer/consumer program.
 
-The Storage class is a singleton class implemented using std::call_once & provides thread-safe push() & pop() functions.
+The storage class has an internal queue.
 push() locks the queue and pushes a string.
 pop() locks the queue, copies the string at front & pops the queue.
 
@@ -11,3 +11,12 @@ flag inside Storage class.
 
 A consumer thread polls the singleton Storage queue every second to check if the queue is empty & pops from the
 queue and writes it to a file, until the producer is finished.
+
+**Addendum**
+In our previous submission, we made Storage a singleton class which was unnecessary. The program itself was not working
+correctly. We re-implemented the operations and made pop() return boolean, false when the queue is empty so that it can
+release the lock immediately, or it can return true after moving the front to the passed string reference.
+
+This way, in the consumer thread, we can run a while-loop until producer is finished and check if the pop is successful,
+hence write the line to file, or wait for 1 second and check again.
+

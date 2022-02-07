@@ -2,9 +2,7 @@
 #include "consumer/consumer.h"
 
 #include <iostream>
-#include <fstream>
 #include <string>
-#include <chrono>
 #include <thread>
 
 
@@ -28,7 +26,7 @@ int main(int argc, char **argv)
 
     Storage storage;
     Consumer consumer(argv[1]);
-                        // use main storage reference
+                         // use main storage reference
     thread consum = thread(consumer, ref(storage));
 
     string line;

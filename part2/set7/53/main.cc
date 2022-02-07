@@ -2,17 +2,14 @@
 #include <string>
 #include <vector>
 #include <thread>
+
 #include "storage/storage.h"
 #include "consumer/consumer.h"
 
 using namespace std;
 
 
-void usage()
-{
-    cout << "Usage: a.out [FILENAME...]\n"
-            "[FILENAME...] -- space-separated distinct filenames for each thread\n";
-}
+void usage();
 
 
 int main(int argc, char **argv)
@@ -23,7 +20,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    Storage *storageMain = Storage::instance(); // main storage instance
+    Storage storageMain;
     vector<Consumer> vConsumers;
 
     for (size_t idx = 1, end = argc; idx != end; ++idx)
@@ -31,14 +28,13 @@ int main(int argc, char **argv)
     
     vector<thread> vThreads;
     for (auto &consumer: vConsumers)
-        vThreads.emplace_back(ref(consumer));
+        vThreads.emplace_back(ref(consumer), ref(storageMain));
 
     string line;
     while (getline(cin, line))
-        storageMain->push(line);                // produce lines until Ctrl^D
+        storageMain.push(line);                // produce lines
 
-    storageMain->finish();
-
+    storageMain.finish();
     for (auto &thr: vThreads)
         thr.join();                             // wait for threads to finish
     
@@ -48,3 +44,8 @@ int main(int argc, char **argv)
 }
 
 
+void usage()
+{
+    cout << "Usage: a.out [FILENAME...]\n"
+            "[FILENAME...] -- space-separated distinct filenames for each thread\n";
+}

@@ -4,30 +4,24 @@
 #include <mutex>
 #include <queue>
 #include <iosfwd>
-#include <condition_variable>
 
 class Storage
 {
     std::queue<std::string> d_queue;
     std::mutex              d_mutex;
-    std::condition_variable d_cond;
     bool                    d_finished;
 
-    static Storage          *s_storage;   // singleton ptr
-    static std::once_flag   s_once;
 
     public:
-        static Storage *instance();       // thread-safe singleton instance
+        Storage();
         Storage(Storage const &) = delete;
         
         void push(std::string const &str); // queue operations
-        std::string pop();
+        bool pop(std::string &line);
 
         void finish();
-
-
-    private:
-        Storage();
+        bool finished();
+        bool empty();
 };
 
 
@@ -36,5 +30,10 @@ inline Storage::Storage()
     d_finished(false)
 {}
 
+
+inline bool Storage::finished()
+{
+    return d_finished;
+}
 
 #endif

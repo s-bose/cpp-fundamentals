@@ -5,12 +5,15 @@ Extend the previous program so that it uses multiple clients.
 We create a functor class called Consumer which stores the distinct filename(s) and writes to the
 file each line it pops from the shared queue.
 
-The Storage class is a singleton class implemented using std::call_once & provides thread-safe push() & pop() functions.
-push() locks the queue before pushing a string, and then notifies the other threads using a condition_variable.
+**Addendum**
+The implementation is almost the same as the last one, since the entry-point of producer & consumer's critical 
+section (i.e, pushing and popping the queue) is made thread-safe, it can support multiple threads.
 
-pop() acquires a lock and either immediately releases it & waits on the condition_variable until the queue is no longer empty,
-or, the condition_variable returns and it creates a copy of the queue front, pops it and returns it. 
-Meanwhile if the producer (main) finishes producing, pop() will return an empty-string immediately, signalling its exit.
+The consumer is turned into a functor, which contains a line count that increments for each line it consumes,
+along with the filename associated with that thread, where it writes its share of lines.
+Each consumer thread, when not able to get any line, will, instead of sleeping, yield and allow other consumer
+threads to take over.
+
 
 
 

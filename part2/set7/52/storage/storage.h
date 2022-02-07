@@ -15,10 +15,10 @@ class Storage
         Storage(Storage const &other) = delete;
 
         void push(std::string const &str);
-        std::string pop();
+        bool pop(std::string &line);
 
         bool finished() const;
-        bool empty() const;
+        bool empty();
         void finish();
         
     private:
@@ -35,12 +35,6 @@ inline bool Storage::finished() const
 {
     return d_finished;
 }
-
-
-inline bool Storage::empty() const
-{
-    return d_queue.empty();
-} 
 
 
 inline void Storage::finish()
