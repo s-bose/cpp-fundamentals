@@ -10,6 +10,7 @@ cd $DIR;
 echo "Creating metadata.txt";
 touch metadata.txt;
 
+
 read -p "Enter start: "  start;
 read -p "Enter end: " end;
 
@@ -26,6 +27,8 @@ dirs=`ls -d ./*/`
 for dir in $dirs;
 do
     touch ${dir}order.txt;
+    touch ${dir}explain.txt;
+    
     echo $dir;
 done
 
