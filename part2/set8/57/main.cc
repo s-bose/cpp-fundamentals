@@ -1,19 +1,5 @@
-#include <iostream>
-#include <future>
-#include <thread>
-#include <numeric>
-#include <cstdlib>
+#include "main.ih"
 
-using namespace std;
-
-void fill(double *vec, size_t n_row, size_t n_col);
-void print(double *vec, size_t n_row, size_t n_col);
-
-
-double product(double const *lhs, double const *rhs)
-{
-    return inner_product(lhs, lhs + 5, rhs, 0);
-}
 
 int main()
 {
@@ -29,16 +15,25 @@ int main()
     print(lhs[0], 4, 5);
     cout << "\n\n";
     print(rhsT[0], 6, 5);
-
+    cout << "\n\n";
+    
     for (size_t row = 0; row != 4; ++row)
     {
         for (size_t col = 0; col != 6; ++col)
         {
             packaged_task<
                          double(double const *, double const *)
-                        > ipReducer{ product };
+                        > ipReducer{ product }; // create a package for handling
+                                                // inner products b/w two 1D 
+                                                // arrays
 
+
+                                                // each of the 24 cells is a
+                                                // future returned by its 
+                                                // package 
             fut[row][col] = ipReducer.get_future();
+                                                // detach & run the packaged
+                                                // thread 
             thread{ move(ipReducer), lhs[row], rhsT[col] }.detach();
         }
     }
@@ -46,27 +41,9 @@ int main()
     for (size_t row = 0; row != 4; ++row)
     {
         for (size_t col = 0; col != 6; ++col)
-            cout << fut[row][col].get() << ' ';
+            cout << fut[row][col].get() << ' '; // eventually, get the future
         cout << '\n';
     }
 }
 
 
-
-
-void fill(double *vec, size_t n_row, size_t n_col)
-{
-    for (size_t row = 0; row != n_row; ++row)
-        for (size_t col = 0; col != n_col; ++col)
-            vec[row * n_col + col]  = rand() % 5;
-}
-
-void print(double *vec, size_t n_row, size_t n_col)
-{
-    for (size_t row = 0; row != n_row; ++row)
-    {
-        for (size_t col = 0; col != n_col; ++col)
-            cout << vec[row * n_col + col] << ' ';
-        cout << '\n';
-    }
-}

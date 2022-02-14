@@ -1,0 +1,11 @@
+#include <iostream>
+#include <iterator>
+#include <future>
+#include <thread>
+#include <algorithm>
+
+
+using namespace std;
+
+void qsort(int *beg, int *end);
+void printArray(int *arr, size_t size);
