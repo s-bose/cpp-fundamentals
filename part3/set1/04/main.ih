@@ -1,0 +1,26 @@
+#include "forwarder.h"
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+struct Demo
+{
+    size_t d_first;
+    string d_str;
+    double d_doubl;
+
+    friend ostream &operator<<(ostream &out, Demo const &obj);
+};
+
+void fun(int first, int second);
+void fun2(Demo &&dem1, Demo &&dem2);
+void incrementer(int &one, int &two, int &three);
+
+
+inline ostream &operator<<(ostream &out, Demo const &obj)
+{
+    return out << obj.d_first << '\t' << obj.d_str << '\t' 
+               << obj.d_doubl << '\n';
+}
