@@ -1,5 +1,9 @@
 #include "rawstring.h"
 
+<<<<<<< HEAD
+=======
+#include "../main.h"
+>>>>>>> 19874cd7d77a4c2fe2b00b8bc560c0153226ad3d
 #include <iostream>
 
 using namespace std;
