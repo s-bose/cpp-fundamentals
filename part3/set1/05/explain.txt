@@ -1,0 +1,3 @@
+Exercise 5:
+
+Learn to construct a generic index operator.

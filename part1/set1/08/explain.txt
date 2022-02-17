@@ -1,0 +1,11 @@
+Exercise 8:
+
+Replace a nibble with another using bit manipulation.
+
+The offset of the nibble to be replaced is multiplied with 4 to start 
+from the first bit of the nibble.
+
+15 is shifted to the position of the replaced nibble, then flipped by 
+xor-ing with size_t max (obtained by 1's complementing and OR-ing 1) 
+to reset the nibble's bits to 0, then OR-ed with the replacement 
+(also shifted to nibble position) to replace the bits.

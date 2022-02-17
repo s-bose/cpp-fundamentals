@@ -1,0 +1,9 @@
+explain.txt
+vstring/vstring.h
+vstring/vstring.ih
+vstring/vstring1.cc
+vstring/count.cc
+vstring/countChar.cc
+main.ih
+vowels.cc
+main.cc

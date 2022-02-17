@@ -1,0 +1,10 @@
+Exercise 59:
+
+Learn to inspect one or more futures from inside a repeat-statement, even if the future has not yet been made ready.
+
+> For a single thread, we can repeatedly poll the returned future object to see if its status is ready.
+
+Describe the required modifications if you run multiple threads.
+
+> For multiple threads, we can create an array or vector of their returned future objects and iterate over
+the array to check if the status is ready.

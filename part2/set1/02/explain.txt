@@ -1,0 +1,4 @@
+Exercise 2:
+
+Add arithmetic operators to the Numbers class.
+Implement +=, -=, *=, and /= operators, along with plain binary addition, subtraction, scalar multiplication and division operators.

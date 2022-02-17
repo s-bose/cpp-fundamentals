@@ -1,0 +1,4 @@
+#include "mystring.h"
+
+using namespace std;
+

@@ -1,0 +1,56 @@
+Exercise 11:
+
+Learn to use if statements.
+
+Consider the folllowing statement
+
+    if (first == test1) if (second == test2) value = 5; else value = 6;
+
+* Describe in your own words how the compiler interprets this statement
+
+> The compiler groups the else statement with the nearest if condition by
+reading backwards, meaning the else statement executes if (second == test2)
+is false.
+
+
+* rewrite this statement using the correct layout 
+(no additional syntax elements may be used);
+
+> 
+if (first == test1)
+    if (second == test2)
+        value = 5;
+    else
+        value = 6;
+
+
+* instead of the interpretation as used by the compiler: how would you 
+change the statement so that the `non-default' interpretation is used?
+    
+> The second if statement needs to be enclosed within a pair of curly braces
+inside the first if condition.
+
+if (first == test1)
+{
+    if (second == test2)
+        value = 5;
+}
+else
+    value = 6;
+
+
+* describe in your own words how your changed statement is interpreted
+
+> The else statement is dependent upon the first if condition and value will be 6
+when first != test1.
+
+
+* there is a flaw in the way the original statement was formulated. 
+What is the flaw and how to fix it?
+
+> The original statement has a 'dangling-else' problem, where the if condition the 
+final else belongs to is ambiguous. 
+
+The solution is to be explicit with the statements inside the conditions. If there are multiple if-else
+statements inside an if statement that need to be executed after the first if condition is true, those
+statements need to be enclosed inside curly.

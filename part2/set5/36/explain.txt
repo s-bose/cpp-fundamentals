@@ -1,0 +1,64 @@
+Exercise 36:
+
+Learn to shed excess capacity from a vector.
+
+1. Store all unique words that were found in a file  in a vector.
+
+
+ifstream file{ "sample.txt", ios::in };
+set<string> sset;
+string str;
+while (file >> str)
+    sset.insert(str);
+
+vector<string> vec(sset.begin(), sset.end());
+
+
+2. What are the vector's size and capacity?
+
+size = 4, capacity = 4
+
+3. Next add one additional word to the vector. What are the vector's new size and capacity?
+
+after adding one additional word.
+
+size = 5, capacity = 8
+
+4. Shed its excess capacity, and show that you succeeded in doing that by displaying the size and capacity once again.
+
+We do this by creating an anonymous vector initialized with vec's content and swapping it with vec.
+This newly initialized vector will only allocate as much as necessary, shrinking the capacity.
+
+size after = 5, capacity = 5
+
+
+5. define a class containing a vector<string> data member. Store all unique words and 
+also add one additional word to the data member.
+
+class Strings
+{
+    std::vector<std::string> d_strs;
+
+    public:
+        void push_back(std::string const &str);
+        void swap(Strings &other);
+    private:
+};
+
+inline void Strings::swap(Strings &other)
+{
+    std::vector<std::string>(d_strs).swap(other.d_strs);
+}
+
+
+6. by only using members that are standard available to classes, show how you can shed excess capacity 
+of your class's vector data member.
+
+We integrate the vector swapping feature into the push_back function so that after each string
+insertion, if the capacity has been increased, it is shrinked to fit only the required no of strings.
+
+
+7. Explain why shrink_to_fit shouldn't be used.
+
+shrink_to_fit is not guaranteed to work. It depends on the implementation whether to fulfill or ignore the
+request.

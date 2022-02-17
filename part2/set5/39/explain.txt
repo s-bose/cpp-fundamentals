@@ -1,0 +1,9 @@
+Exercise 39:
+
+learn to modify argv without explicitly using new.
+
+Addendum:
+The first submission had valgrind throwing uninitialized value error.
+The vector<char*> used for storing modified argv's has been terminated with 0 (nullptr)
+for the edge-case of checking argv[argc] == 0.
+ 

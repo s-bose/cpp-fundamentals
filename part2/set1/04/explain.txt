@@ -1,0 +1,51 @@
+Exercise 4:
+
+Learn why streams can be used to determine the truth values of conditions, but not to assign values to bool variables.
+
+Function promptGet:
+
+bool promptGet(istream &in, string &str)
+{
+    cout << "Enter a line or ^D\n";     // ^D signals end-of-input
+
+    return getline(in, str);
+}
+    
+Calling promptGet:
+
+int main()
+{
+    while (promptGet(cin, str))
+        process(str);
+}
+        
+1. Why doesn't this work?
+
+> standard istreams define explicit bool() const conversion operator.
+promptGet() function tries to implicitly convert getline()'s returned istream object to bool,
+which will not work.
+
+2. Change promptGet's body so that the code does compile.
+
+> By explicitly calling the bool() conversion operator, we can fix this.
+
+bool promptGet(istream &in, string &str)
+{
+    cout << "Enter a line or ^D\n";     // ^D signals end-of-input
+
+    return static_cast<bool>(getline(in, str));
+}
+
+
+3. Without changing promptGet's body, change promptGet so that the code does compile.
+
+> Instead of returning bool, promptGet can directly return the istream object returned by getline().
+Inside the while loop's condition, the explicit conversion will be applied on the istream object.
+
+
+istream &promptGet(istream &in, string &str)
+{
+    cout << "Enter a line or ^D\n";     // ^D signals end-of-input
+
+    return getline(in, str);
+}

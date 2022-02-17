@@ -1,0 +1,11 @@
+#include <iostream>
+#include <future>
+#include <thread>
+#include <numeric>
+#include <cstdlib>
+
+using namespace std;
+
+void fill(double *vec, size_t n_row, size_t n_col);
+void print(double *vec, size_t n_row, size_t n_col);
+double product(double const *lhs, double const *rhs);

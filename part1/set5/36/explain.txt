@@ -1,0 +1,61 @@
+Exercise 36:
+
+Learn to use equivalent pointer-expressions for array-expressions.
+
+----------------------------------------------------------------------------
+  definition:         rewrite:  
+----------------------------------------------------------------------------
+  int x[8];           x[4]            
+
+pointer notation:  *(x + 4)
+       semantics:  x + 4 points to the location of the 4th int beyond x.
+                   That element is reached using the dereference operator (*)
+
+----------------------------------------------------------------------------
+  int x[8];           x[2] = x[3];
+
+pointer notation:    *(x + 2) = *(x + 3);
+       semantics:    x + 2 point to the 2nd int after x, whose value is accessed
+                     and assigned to the 3rd int after x, pointed by x + 3.
+----------------------------------------------------------------------------
+  char *argv[8];      cout << argv[2];
+
+pointer notation:     cout << *(argv + 2);
+       semantics:     argv + 2 points to the NTBS that is 2 (char *) steps away
+                      beyond argv, and dereferences its value and passes it to
+                      cout stream to be displayed.
+----------------------------------------------------------------------------
+  int x[8];           &x[10] - &x[3];
+ 
+pointer notation:     (x + 10) - (x + 3); 
+       semantics:     x + 10 and x + 3 calculate the address of the ints 10 and 3
+                      steps further from x and subtracts the addresses.
+----------------------------------------------------------------------------
+  main's argv;        argv++[0];
+
+pointer notation:     *(argv++);   
+       semantics:     argv returns its current value, which is dereferenced to get
+                      the 0-th argument, then argv increments to point to the next
+                      argument.
+----------------------------------------------------------------------------
+  main's argv;        argv[0]++;
+
+pointer notation:     (*argv)++
+       semantics:     the first argument's char pointer is obtained by derferencing
+                      argv, which is postfix incremented, which returns the char
+                      pointer and then increments it to point to the next char in the
+                      argument.
+----------------------------------------------------------------------------
+  main's argv;        ++argv[0];
+
+pointer notation:     *(++argv);
+       semantics:     argv increments once to point to the 2nd argument, then dereferenced
+                      to obtain the 2nd argument's starting poiner (char *)
+----------------------------------------------------------------------------
+  main's argv;        ++argv[0][2];
+
+pointer notation:     ++*(*argv + 2);
+       semantics:     gets the pointer to the first argument (*argv), proceeds 2 steps
+                      ahead to get the pointer to the 3rd element (*argv + 2), gets its
+                      value by dereference (*(*argv + 2)) and increments it.
+----------------------------------------------------------------------------

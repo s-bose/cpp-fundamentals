@@ -1,0 +1,15 @@
+Exercise 51:
+
+Learn to understand the vehaviour of istreams.
+
+1. Explain why the output for a.out 1 2 is not 
+    extracted first number: 1
+    extracted second number: 2
+
+> When the istringstream object is initialized first with 1 (argv[1]),
+  after its extraction it is already at the end, hence its eof flag is set.
+
+  After reinitializing it with 2 (argv[2]) it still remains in the eof stage,
+  hence extracting again does not extract anything.
+
+  By clearing the eof flag (istr.clear()) we can proceed to extract 2 again.

@@ -1,0 +1,8 @@
+#include "vstring.h"
+#include <iterator>
+#include <istream>
+#include <algorithm>
+#include <numeric>
+
+using namespace std;
+

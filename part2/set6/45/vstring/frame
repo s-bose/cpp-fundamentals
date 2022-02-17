@@ -1,0 +1,6 @@
+//#define XERR
+#include "vstring.ih"
+
+Vstring::
+{
+}

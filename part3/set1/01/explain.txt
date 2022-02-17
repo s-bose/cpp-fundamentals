@@ -1,0 +1,5 @@
+Exercise 1:
+
+Show that templates don't result in `code bloat'
+Show in a small example that template functions instantiated for the same type, 
+but in different source files will eventually be linked as a single function in the final executable program. 

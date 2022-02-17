@@ -1,0 +1,3 @@
+Exercise 4:
+
+Learn to design a generic function template.

@@ -1,0 +1,8 @@
+Exercise 49:
+
+We are required to convert time specification to a fine-grained time specification and vice-versa. 
+To do this we make use of the chrono::duration_cast. And then for the seconds to minutes, 
+we make use of a custom duration of a `double' type since it is converting to a more specific unit,
+along with the minutes' ratio to compute the minute representation.
+
+Finally, we print both the hours to minutes and the seconds to minutes.

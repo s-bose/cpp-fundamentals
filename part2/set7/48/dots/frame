@@ -1,0 +1,6 @@
+//#define XERR
+#include "dots.ih"
+
+Dots::
+{
+}

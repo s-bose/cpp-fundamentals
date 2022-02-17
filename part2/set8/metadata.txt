@@ -1,0 +1,5 @@
+Set: Set 8
+
+Rater:
+
+Authors: Albert Campaña, David Vives, Shiladitya Bose, Julia Walczyńska

@@ -1,0 +1,6 @@
+Exercise 06:
+
+
+Different ways of determining even/oddness of an unsigned value.
+
+

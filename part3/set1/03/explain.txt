@@ -1,0 +1,3 @@
+Exercise 3:
+
+Learn to use templates to simplify the use of void * returning functions/operators.

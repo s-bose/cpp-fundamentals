@@ -1,0 +1,19 @@
+Exercise 22:
+
+A class Derived is publicly derived from Base. Both classes define a member hello(), inserting a class specific text into cout.
+Define a function caller(Base &obj) and show how you can call Derived::hello. Provide a clear explanation why this is bad practice.
+
+> The function caller works by explicitly casting the Base& argument into Derived& which lets us access Derived::hello. However, this only works if the object passed is actually a Derived object, otherwise it might try accessing parts of memory where it shouldn't, resulting in unexpected results.
+As an example, consider Derived class having a data member d_data and initialized to some value for different Derived objects.
+
+If caller also prints d_data of the typecasted Derived&, it will show the right value when called with a Derived object.
+
+    Derived d1(42);
+    caller(d1); // prints 42
+
+But when called with a Base object, it doesn't work.
+
+    Base b1;
+    caller(b1); // prints 14626894441279717376
+
+

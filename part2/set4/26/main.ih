@@ -1,0 +1,7 @@
+#include "base/base.h"
+#include "derived/derived.h"
+#include <iostream>
+
+Base **derivedFactory(size_t size);
+
+using namespace std;

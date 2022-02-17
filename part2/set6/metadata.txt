@@ -1,0 +1,5 @@
+Set: Set 6
+
+Rater: FBB
+
+Authors: Albert Campaña, David Vives, Shiladitya Bose, Julia Walczyńska

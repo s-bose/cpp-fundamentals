@@ -1,0 +1,5 @@
+Exercise 50:
+
+Learn to use chrono clock facilities. 
+Receive an argument: an integral number to which an s, m, h (for seconds, minutes, hours) is appended. 
+Add (or subtract) the specified time (from now), and display the resulting time.

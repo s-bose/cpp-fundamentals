@@ -1,0 +1,4 @@
+Exercise 42:
+
+learn to find ranges in sorted data.
+

@@ -1,0 +1,13 @@
+#include "handler/handler.h"
+#include <fstream>
+#include <iostream>
+#include <thread>
+
+void usage();
+void runner1(Handler &handler, std::ostream &out, 
+            std::string const &text);
+
+void runner2(std::ostream &out, std::string const &text);
+
+
+using namespace std;

@@ -1,0 +1,10 @@
+Exercise 19:
+
+Implement wc program to count characters, words, lines from input stream.
+
+In our previous submission there were multiple issues with the functions'
+implementations.
+In addition, the confusion about .ih headers is resolved and it now
+contains one main.h header containing all the forward declarations, and
+an internal header main.ih including main.h and other libraries needed
+by the function implementations.

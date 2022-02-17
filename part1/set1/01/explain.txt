@@ -1,0 +1,41 @@
+Exercise 01:
+
+Hello world program in C++
+
+Provide short descriptions of what Object files and Executables
+are:
+
+Object file is the binary file generated after compilation containing 
+external references to functions, objects or classes in other libraries 
+or object files.
+
+When a source file containing a main function gets compiled and its 
+object file gets linked with all the external libraries and additional 
+object files it is referring to, the resulting binary that can be 
+executed as a program is called an Executable.
+
+Files:
+ 1. hello.cc       - C++ source file
+ 2. hello.o        - object file after compilation of `hello.cc`
+ 3. hello          - executable file after linking of `hello.o`
+
+Commands:
+
+1. compile hello.cc into object file hello.o
+
+g++ -c hello.cc -Wall -Werror -std=c++2a 
+
+
+1. link `hello.o` and iostream library
+   generate executable `hello`
+   strip executable
+
+g++ -o hello hello.o -Wall -Werror -std=c++2a && strip -s hello
+
+Sizes (in Bytes):
+
+1. hello.cc (Source file)            -- 76 Bytes
+2. hello.o (Object file)             -- 2648 Bytes
+3. hello (Executable, striped)       -- 14464 Bytes
+4. iostream file                     -- 2695 Bytes 
+

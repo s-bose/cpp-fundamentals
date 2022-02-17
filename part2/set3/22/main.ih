@@ -1,0 +1,27 @@
+#include <iostream>
+
+using namespace std;
+
+class Base
+{
+    public:
+        void hello();
+};
+
+class Derived: public Base
+{
+    public:
+        void hello();
+};
+
+inline void Base::hello()
+{
+    cout << "Base hello()" << '\n';
+}
+
+inline void Derived::hello()
+{
+    cout << "Derived hello()" << '\n';
+}
+
+void caller(Base &obj);

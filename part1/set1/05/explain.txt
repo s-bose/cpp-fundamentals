@@ -1,0 +1,28 @@
+Exercise 05:
+
+
+Explain in your own words the meaning of redirection and piping
+
+> Input/Output Redirection is used to specify the input or output
+data to be redirected from or to a file.
+
+eg: program < in
+redirects the file content of `in` to the program input.
+
+eg: program > out
+redirects the program output to the file `out`
+
+Piping is used to pass the output of one program directly to the
+input of another.
+
+
+In particular, explain what happens in
+
+    program < in > out
+
+> program gets its input from a file named in, then the output of
+program gets redirected to a file named out.
+
+    program | less
+
+> the output of program is linked to the input of the program less.

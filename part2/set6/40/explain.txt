@@ -1,0 +1,3 @@
+Exercise 40:
+
+Write a main function filling a vector with random numbers.

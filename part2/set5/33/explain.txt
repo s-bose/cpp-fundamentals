@@ -1,0 +1,4 @@
+Exercise 33:
+
+Construct a program that prints a sorted list of all different words appearing at its standard input.
+report each word together with the number of times it was encountered in the input.

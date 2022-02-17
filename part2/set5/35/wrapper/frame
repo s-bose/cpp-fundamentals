@@ -1,0 +1,6 @@
+//#define XERR
+#include "wrapper.ih"
+
+Wrapper::
+{
+}

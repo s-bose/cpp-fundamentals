@@ -1,0 +1,4 @@
+Exercise 52:
+
+Define the now manipulator to insert the current date and time into
+the stream.

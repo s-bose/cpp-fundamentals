@@ -1,0 +1,6 @@
+//#define XERR
+#include "storage.ih"
+
+Storage::
+{
+}

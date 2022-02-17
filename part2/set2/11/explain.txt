@@ -1,0 +1,62 @@
+Exercise 11:
+
+1. Show that exception catchers catching objects result in additional copies of thrown objects, compared to exception catchers catching references to objects. Also show that when throwing objects or references copies of the (referred to) objects are thrown.
+
+
+> To demonstrate, we create a MyException class which increments a static d_count each time a new instance is constructed (both normally and copy constructed).
+ In main(), inside a try block we throw a new MyException instance's reference and then catch the exception object.
+
+ try {...}
+ catch(MyException exp)
+ {
+     std::cerr << MyException::count() << '\n';
+ }
+
+ // prints 3
+
+ This is because total 3 instances are created. 
+ 1st, upon creation of new MyException object in try block. 
+ 2nd, upon throwing its reference which ends up copying the object.
+ 3rd, upon catching the object by-value which copies the object once more.
+
+ To prove that throw will copy the thrown object regardless, we then catch the object's const reference.
+
+ try{...}
+ catch(MyException const &exp)
+ {
+     std::cerr << MyException::count() << '\n';
+ }
+
+ // prints 2
+
+ Here first 2 instances are created the same way. The 3rd instance is not created since the thrown object is caught by reference.
+
+ Thus, exception catchers catching objects result in additional copies, and thrown objects are always copied.
+
+
+2. Also answer the question whether `throw;' results in throwing the currently available exception or a copy of that exception.
+
+> an empty throw inside an exception handler directly throws the caught exception by reference to the outer level.
+ As an example, in the following:
+
+ try
+    {
+        try
+        {
+            throw *(new MyException);
+        }
+        catch(MyException const &exp)
+        {
+            throw;
+        }
+        
+    }
+    catch(MyException const &exp)
+    {
+        std::cerr << MyException::count() << '\n';
+    }
+    
+ // prints 2
+
+ The exception object is copied once when thrown the first time from the inner try.
+ The inner catch rethrows the object by reference to the outer catch block which also takes the object by reference.

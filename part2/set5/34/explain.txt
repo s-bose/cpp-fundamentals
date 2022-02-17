@@ -1,0 +1,3 @@
+Exercise 34:
+
+Simplify the organization of Strings class using containers.

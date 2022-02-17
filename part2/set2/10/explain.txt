@@ -1,0 +1,3 @@
+Exercise 10:
+
+learn to apply the 1:1 coordinate design in a consistent way.

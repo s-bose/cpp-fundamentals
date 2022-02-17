@@ -1,0 +1,3 @@
+Exercise 57:
+
+Compute the inner product of two matrices using std::packaged_task.
