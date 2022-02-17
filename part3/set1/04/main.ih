@@ -5,11 +5,7 @@
 
 using namespace std;
 
-<<<<<<< HEAD
 struct Demo // POD Struct
-=======
-struct Demo
->>>>>>> 19874cd7d77a4c2fe2b00b8bc560c0153226ad3d
 {
     size_t d_first;
     string d_str;

@@ -5,7 +5,6 @@
 #include <string>
 
 
-<<<<<<< HEAD
 template <typename Type>
 Type *rawCapacity(size_t capacity)
 {   
@@ -16,8 +15,6 @@ Type *rawCapacity(size_t capacity)
     return ptr;
 }
 
-=======
->>>>>>> 19874cd7d77a4c2fe2b00b8bc560c0153226ad3d
 class RawString
 {
     size_t d_capacity;
