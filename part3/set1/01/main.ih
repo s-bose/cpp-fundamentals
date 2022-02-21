@@ -1,0 +1,9 @@
+#include "funcTemplate.h"
+#include "union.h"
+
+#include <iostream>
+
+using namespace std;
+
+void fun1();
+void fun2();

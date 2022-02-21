@@ -3,3 +3,8 @@ Exercise 1:
 Show that templates don't result in `code bloat'
 Show in a small example that template functions instantiated for the same type, 
 but in different source files will eventually be linked as a single function in the final executable program. 
+
+**Addendum**
+We have changed the naming convention of the function pointer members in the unions.
+In addition, we created separate source files containing the different instantiations of the template which are
+to be linked to main.

@@ -1,5 +1,7 @@
 explain.txt
 funcTemplate.h
-impl1.cc
-impl2.cc
+union.h
+main.ih
+source1.cc
+source2.cc
 main.cc

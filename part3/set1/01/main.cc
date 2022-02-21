@@ -1,14 +1,7 @@
-#include <iostream>
-#include "funcTemplate.h"
-
-using namespace std;
+#include "main.ih"
 
 int main()
 {
-    Impl1 imp1;
-    Impl2 imp2;
-
-    cout << hex << imp1.VOIDPTR << '\n' // convert union to void ptr
-                << imp2.VOIDPTR << '\n'
-                << reinterpret_cast<void *>(&total<int>) << '\n';
+    fun1();
+    fun2();
 }
