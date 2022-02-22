@@ -1,0 +1,6 @@
+//#define XERR
+#include "counter.ih"
+
+Counter::
+{
+}
