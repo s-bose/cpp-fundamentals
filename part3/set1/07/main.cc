@@ -3,8 +3,8 @@
 
 using namespace std;
 
-template<typename T>
-ostream &operator<<(ostream &out, const set<T> &set) {
+template<typename Type>
+ostream &operator<<(ostream &out, const set<Type> &set) {
 
     out << '{';
 
