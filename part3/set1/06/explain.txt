@@ -1,0 +1,4 @@
+Exercise 6:
+
+learn to design and use a function template.
+Modify the Exception class previously developed so that you only need to define one insertion operator.

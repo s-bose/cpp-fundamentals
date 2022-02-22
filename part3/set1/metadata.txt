@@ -1,5 +1,5 @@
 Set: Set 1
 
-Rater: FBB
+Rater:
 
 Authors: Erwin Meijerhof, Dimitrie Birlez, Nathan van Goor, Shiladitya Bose
