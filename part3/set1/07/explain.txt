@@ -1,0 +1,3 @@
+Exercise 7:
+
+learn to write a function template that can be applied recursively.
