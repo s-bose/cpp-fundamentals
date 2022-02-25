@@ -8,6 +8,11 @@
 template <typename Type>
 class Counter: public InstanceCtr
 {
+        // All instance of Counter<Type> inherits
+        // from InstanceCtr.
+        // for each obj creation (regardless of Type),
+        // an InstanceCtr base is created, thus
+        // counting all global objs.
 
     static size_t s_count;
     static size_t s_actual;
@@ -108,6 +113,7 @@ Counter<Type>::~Counter()
     --s_actual;
 }
 
+    // initialize static count (class specific)
 template <typename Type>
 size_t Counter<Type>::s_count = 0;
 

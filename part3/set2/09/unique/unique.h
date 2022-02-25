@@ -10,10 +10,11 @@ class Unique
 
     public:
         Unique() = default;
-        Unique(Unique<Type> const &obj);
-        Unique(Unique<Type> &&tmp);
-        Unique(Type value);
-        Unique(Type *ptr);
+        Unique(Type value);              // value-type
+        Unique(Type *ptr);               // ptr-type
+        Unique(Unique<Type> const &obj); // copy
+        Unique(Unique<Type> &&tmp);      // move
+     
         Unique<Type> &operator=(Unique<Type> const &obj);
         Unique<Type> &operator=(Unique<Type> &&tmp);
 
@@ -34,13 +35,13 @@ Unique<Type>::Unique(Type *ptr)
     d_data(ptr)
 {}
 
-template <typename Type>
+template <typename Type>    // copy
 Unique<Type>::Unique(Unique<Type> const &obj)
 :
     d_data(std::make_unique<Type>(*obj.d_data))
 {}
 
-template <typename Type>
+template <typename Type>    // move
 Unique<Type>::Unique(Unique<Type> &&tmp)
 :
     d_data(std::move(tmp.d_data))

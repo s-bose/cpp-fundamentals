@@ -1,0 +1,5 @@
+Exercise 11:
+
+Learn to generalize facilities of class templates.
+Also implement global counts (irrespective of the used template type parameters) of all 
+objects that were ever constructed and are currently alive.

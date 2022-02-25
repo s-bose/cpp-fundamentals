@@ -7,8 +7,12 @@
 template <typename Type>
 class Counter
 {
-    static size_t s_count;
+
+            // total & actual count of objects
+            // of one Couter<type> class
+    static size_t s_count; 
     static size_t s_actual;
+
     std::shared_ptr<Type> d_data;
 
     public:
@@ -100,7 +104,7 @@ std::ostream &operator<<(std::ostream &out, Counter<Tp> const &obj)
 template <typename Type>
 Counter<Type>::~Counter()
 {
-    --s_actual;
+    --s_actual; // reduce actual count on destroy
 }
 
 template <typename Type>

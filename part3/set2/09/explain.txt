@@ -1,0 +1,5 @@
+Exercise 9:
+
+Learn to design a basic class template.
+Design a class Unique that defines one template type parameter (e.g., Type). 
+Its only data member is a unique_ptr to such a type.
