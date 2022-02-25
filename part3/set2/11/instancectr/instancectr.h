@@ -3,8 +3,8 @@
 
 #include <iosfwd>
 
-class InstanceCtr
-{
+class InstanceCtr   // external plain class storing 
+{                   // obj counts
     static size_t d_count;
     static size_t d_actual;
 

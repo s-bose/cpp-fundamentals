@@ -31,9 +31,13 @@ Type &Simple<Type>::get()
     return d_value;
 }
 
+
+
 template <typename Tp>
 class Simple<Tp *>
 {
+        // partial specialization for ptr-types
+
     Tp *d_value;
 
     public:

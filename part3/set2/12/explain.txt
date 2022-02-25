@@ -1,0 +1,11 @@
+Exercise 12:
+
+Learn to `tailor' a class to different types.
+Design a specialization for a pointer type for the class `Simple'.
+
+
+If you're the author of the class Simple, what could you do to avoid having to provide the specialization?
+
+> Since the class primarily has a value-type data member and the `get()' function also deals with value-type,
+specializing Simple<Type *> seems unnecessary, rather, a constructor overload `Simple(Type *ptr)' should handle
+the situation just fine. Only issue is that the class can't have ptr-type template argument.
