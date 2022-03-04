@@ -9,3 +9,10 @@ If you're the author of the class Simple, what could you do to avoid having to p
 > Since the class primarily has a value-type data member and the `get()' function also deals with value-type,
 specializing Simple<Type *> seems unnecessary, rather, a constructor overload `Simple(Type *ptr)' should handle
 the situation just fine. Only issue is that the class can't have ptr-type template argument.
+
+
+**Addendum**
+In the previous attempt, the specialization for pointer-type did not free the stored pointer with a destructor.
+Additionally, `d_value' was simply holding the pointer address passed in the constructor argument, leading to
+leakage, which is fixed by creating a new pointer to a copy-constructed `Tp' object from the contents of the
+supplied pointer.

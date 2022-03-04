@@ -4,20 +4,15 @@
 template <typename Type>
 class Simple
 {
-    Type d_value;
+    Type d_value = Type{};
 
     public:
-        Simple();
+        Simple() = default;
         Simple(Type const &value);
 
         Type &get();
 };
 
-template <typename Type>
-Simple<Type>::Simple()
-:
-    d_value(Type{})
-{}
 
 template <typename Type>
 Simple<Type>::Simple(Type const &value)
@@ -32,37 +27,46 @@ Type &Simple<Type>::get()
 }
 
 
+// template <typename Tp>
+// class Simple<Tp *>
+// {
+//     Tp d_value = Tp{};
 
-template <typename Tp>
-class Simple<Tp *>
-{
-        // partial specialization for ptr-types
+//     public:
+//         Simple() = default;
+//         Simple(Tp *ptr);
+//         Tp &get();
+// };
 
-    Tp *d_value;
+// template <typename Tp>
+// Simple<Tp *>::Simple(Tp *ptr)
+// :
+//     d_value(*ptr)
+// {}
 
-    public:
-        Simple();
-        Simple(Tp *value);
+// template <typename Tp>
+// Tp &Simple<Tp *>::get()
+// {
+//     return d_value;
+// }
 
-        Tp &get();
-};
 
-template <typename Tp>
-Simple<Tp *>::Simple()
-:
-    d_value(new Tp)
-{}
+// alternatively, we can inherit from Simple<ValueType> 
+// to Simple<PtrType>
+// template <typename T>
+// class Simple<T *> : public Simple<T>
+// {
+//     public:
+//         Simple() = default;
+//         Simple(T const *ptr);
+// };
 
-template <typename Tp>
-Simple<Tp *>::Simple(Tp *value)
-:
-    d_value(value)
-{}
 
-template <typename Tp>
-Tp &Simple<Tp *>::get()
-{
-    return *d_value;
-}
+// template <typename T>
+// Simple<T *>::Simple(T const *ptr)
+// :
+//     Simple<T>(*ptr)
+// {}
+
 
 #endif

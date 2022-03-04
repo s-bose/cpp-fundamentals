@@ -12,13 +12,11 @@ int main(int argc, char **argv) {
 
     for (int i = 0; i < 5; ++i)
         cout << storage[i] << ' ';
-    cout << endl;
+    cout << '\n';
 
     sort(storage.rbegin(), storage.rend());
 
     for (int i = 0; i < 5; ++i)
         cout << storage[i] << ' ';
-    cout << endl;
-
-    return 0;
+    cout << '\n';
 }

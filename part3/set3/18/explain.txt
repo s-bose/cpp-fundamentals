@@ -1,0 +1,3 @@
+Exercise 18:
+
+Learn to design a small template meta program.

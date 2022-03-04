@@ -3,24 +3,16 @@
 
 #include <iosfwd>
 #include <string>
-
+#include <cmath>
 
 template <size_t Nr>
 struct NrTrait
 {
     static constexpr size_t value = Nr;
-    static constexpr bool even = Nr % 2 ? false : true;
-    static constexpr bool by3 = Nr % 3 ? false : true;
-    static constexpr size_t width = length();
-
-    private:
-        static constexpr size_t length();
+    static constexpr bool even = not (Nr % 2);
+    static constexpr bool by3 = not (Nr % 3);
+    static constexpr size_t width = std::ceil(std::log10(Nr));
 };
 
-template <size_t Nr>
-constexpr size_t NrTrait<Nr>::length()
-{
-    return std::to_string(Nr).length();
-}
         
 #endif
