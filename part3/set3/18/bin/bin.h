@@ -2,8 +2,6 @@
 #define INCLUDED_BIN_
 
 #include <iosfwd>
-#include <cmath>
-#include <string>
 
 template <size_t num>
 struct Bin
