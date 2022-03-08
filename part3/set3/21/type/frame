@@ -1,6 +1,0 @@
-//#define XERR
-#include "type.ih"
-
-Type::
-{
-}

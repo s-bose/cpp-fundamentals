@@ -1,4 +1,4 @@
-#include "type/type.h"
+#include "include/type.h"
 #include <iostream>
 
 using namespace std;
@@ -13,4 +13,5 @@ int main()
             Type<int, double, int>::located << ' ' << 
             Type<int, double, int, int, int>::located << 
             '\n';
+    
 }
