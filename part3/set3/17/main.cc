@@ -6,10 +6,8 @@ using namespace std;
 
 int main()
 {
-    cout << NrTrait<123>::value << '\n'
-         << NrTrait<123>::even << '\n'
-         << NrTrait<12>::even << '\n'
-         << NrTrait<8375>::by3 << '\n'
-         << NrTrait<375>::by3 << '\n'
-         << NrTrait<8375>::width << '\n';
+    cout << NrTrait<1971962>::value << '\n'
+         << NrTrait<1971962>::even << '\n'
+         << NrTrait<1971962>::by3 << '\n'
+         << NrTrait<1971962>::width << '\n';
 }

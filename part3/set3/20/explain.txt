@@ -1,2 +1,3 @@
 Exercise 20:
 
+Learn to combine variadic template arguments

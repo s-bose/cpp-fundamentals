@@ -1,0 +1,3 @@
+Exercise 19:
+
+Learn to insert the info in a variadic non-type template into a stream.

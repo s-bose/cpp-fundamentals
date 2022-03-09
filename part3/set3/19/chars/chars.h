@@ -6,7 +6,7 @@ template <char... charList>
 class Chars
 {
     public:
-        friend 
+        friend
         std::ostream &operator<< <>(std::ostream &out,
                                     Chars<charList...> const &obj);
 };
@@ -15,7 +15,8 @@ class Chars
 template <char... charList>
 inline std::ostream &operator<<(std::ostream &out, 
                                 Chars<charList...> const &obj)
-{
+{   
+        // unfold the chars & print
     return (out << ... << charList);
 }
 

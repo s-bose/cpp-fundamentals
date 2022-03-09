@@ -5,5 +5,5 @@ using namespace std;
 
 int main()
 {
-    cout << Bin<5>::value << '\n';
+    cout << Bin<13>::value << '\n';
 }

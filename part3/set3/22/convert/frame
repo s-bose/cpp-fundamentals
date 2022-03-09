@@ -1,6 +1,0 @@
-//#define XERR
-#include "convert.ih"
-
-Convert::
-{
-}

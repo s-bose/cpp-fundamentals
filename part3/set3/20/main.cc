@@ -10,6 +10,7 @@ int main()
                 OneChar<'1'>, 
                 Merge<
                     Merge<Chars<'4', '5'>, OneChar<'6'>>::CP,
-                    Chars<'A', 'B', 'C', 'D'>>::CP
+                    Chars<'A', 'B', 'C', 'D'>
+                >::CP
             >::CP{} << '\n';
 }

@@ -1,0 +1,3 @@
+Exercise 22:
+
+Learn to used nested class templates using meta programming.

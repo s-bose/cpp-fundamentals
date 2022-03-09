@@ -1,0 +1,3 @@
+Exercise 21:
+
+Learn to compare types of template parameters.

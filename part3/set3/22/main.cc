@@ -1,4 +1,4 @@
-#include "convert/convert.h"
+#include "include/convert.h"
 #include <iostream>
 
 using namespace std;
@@ -10,6 +10,6 @@ int main()
     cout << Convert<57005, 16>::CP{} << '\n'; // displays 'dead'
     cout << Convert<57005, 32>::CP{} << '\n'; // displays '1nld'
 
-    cout << Convert<7, 2>::CP{} << '\n';
-
+    cout << Convert<0, 2>::CP{} << '\n';
+    
 }

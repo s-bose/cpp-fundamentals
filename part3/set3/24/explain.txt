@@ -1,0 +1,4 @@
+Exercise 23:
+
+Learn to generalize conversions of nrs. to text.
+Generalize CText so that any (non-negative integral) number can be converted to an asciiZ string.
