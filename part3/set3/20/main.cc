@@ -7,7 +7,7 @@ int main()
 {
         cout << 
             Merge<
-                Chars<'1', '2', '3'>, 
+                OneChar<'1'>, 
                 Merge<
                     Merge<Chars<'4', '5'>, OneChar<'6'>>::CP,
                     Chars<'A', 'B', 'C', 'D'>>::CP
