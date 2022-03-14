@@ -1,3 +1,10 @@
 Exercise 17:
 
-Learn to design a simple trait class
+Learn to design a simple trait class.
+
+**Addendum**
+In previous submission, and many other exercises, the #includes for basic types like size_t were <iosfwd> which was unnecessary.
+That has been changed to <cstddef>.
+The bool `even' and `by3' evaluations have been changed from `not (Nr % 2)' to `Nr % 2 == 0'.
+Instead of using log10, a separate consteval static function has been created to calculate the number width in compile-time.
+
