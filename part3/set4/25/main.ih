@@ -1,0 +1,11 @@
+#include "insertable/insertable.h"
+#include <vector>
+#include <iostream>
+#include <iterator>
+
+using namespace std;
+
+typedef Insertable<vector, int> InsertableVector;
+
+
+ostream &operator<<(ostream &out, vector<int> const &vec);

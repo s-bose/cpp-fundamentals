@@ -1,0 +1,5 @@
+Exercise 26:
+
+Learn to implement a policy class.
+Implement all required members of the class Insertable introduced in the previous exercise.
+
