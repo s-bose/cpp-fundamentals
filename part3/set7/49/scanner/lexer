@@ -1,0 +1,11 @@
+%filenames scanner
+
+//%interactive
+//%debug
+
+%%
+
+[a-zA-Z]+                   return Token::IDENT; 
+.|\n                     // ignore
+
+

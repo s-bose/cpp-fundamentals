@@ -1,0 +1,9 @@
+Exercise 49:
+
+The following program takes in text via stdin or files if any arguments are
+passed and outputs the unique words to stdout. The flexc++ scanner generator
+was used to generate the Scanner and ScannerBase classes. We modified Scanner
+and added the Tokens enum.
+
+scannerbase.h, scanner.ih and lex.cc were omitted from order.txt file nothing
+was modified and they take up space on the pdf.

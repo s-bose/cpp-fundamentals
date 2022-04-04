@@ -1,0 +1,53 @@
+//%interactive
+
+%filenames = "scanner"
+%x comments sentences
+
+
+%%
+
+[ \t]+           // ignore
+
+[a-zA-Z0-9_]      {
+                      // start sentence parsing
+                     begin(StartCondition_::sentences);
+                     more();  // capture first letter
+                  }
+
+
+<sentences>.      more();     // capture anything that follows
+
+
+
+<sentences>"/*"   {     // switch to comment scanner
+                        // remove captured "/*" from sentence
+                     begin(StartCondition_::comments);
+                     auto match = matched();
+                     match.erase(match.end() - 2, match.end());
+                     setMatched(std::move(match));
+                     return Token::SENTENCE;
+                  }
+
+<sentences>\n   {
+                        // switch to base on newline
+                     begin(StartCondition_::INITIAL);
+                     return Token::SENTENCE;
+                  }
+
+"/*"             {      // begin comment from base
+                    begin(StartCondition_::comments);
+                 }
+
+<comments>"*/"   {
+                        // return to base upon comment close
+                        // return '\n' token to differentiate
+                        // from SENTENCE
+                    begin(StartCondition_::INITIAL);
+                    return '\n';
+                 }
+
+<comments>.|\n    // ignore
+
+\n                return '\n';
+
+
