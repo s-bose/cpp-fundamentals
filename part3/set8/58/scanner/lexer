@@ -1,0 +1,15 @@
+%filenames scanner
+
+%interactive
+//%debug
+number      [0-9]+
+optnumber   [0-9]*
+
+%%
+
+[ \t]+                          // Often used: skip white space
+{number}(\.{optnumber})?         return Tokens::NUM;
+\-{number}(\.{optnumber})?       return Tokens::NUM;
+[+\-*\/()\$]                     return matched().front();
+\n                              return '\n';
+.                               // ignore

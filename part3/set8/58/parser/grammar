@@ -1,0 +1,68 @@
+//%default-actions quiet
+%filenames parser
+%scanner ../scanner/scanner.h
+%token-path ../scanner/tokens.h
+
+%stype double
+
+%baseclass-preinclude     <cmath>
+
+
+// lowest precedence
+%token NUM
+%left '+' '-'   // lowest precedence
+%left '*' '/'   // next precedence
+%right '$'      // unary sqrt
+
+%%
+//  Define the start-rule below (the name `startrule' may be altered)
+
+input:
+    // empty
+|
+    input line
+;
+
+line:
+    '\n'
+|
+    expr '\n'
+    {
+        std::cout << '\t' << $1 << std::endl; 
+    }
+;
+
+expr:
+    NUM
+|
+    expr '+' expr
+    {
+        $$ = $1 + $3;
+    }
+|
+    expr '-' expr
+    {
+        $$ = $1 - $3;
+    }
+|
+    expr '*' expr
+    {
+        $$ = $1 * $3;
+    }
+|
+    expr '/' expr
+    {
+        $$ = $1 / $3;
+    }
+|
+    '$' expr
+    {
+        $$ = sqrt($2);
+    }
+|
+    '(' expr ')'
+    {
+        $$ = $2;
+    }
+;
+

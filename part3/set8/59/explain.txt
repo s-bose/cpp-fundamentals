@@ -1,0 +1,40 @@
+Exercise 59:
+
+learn to solve conflicts occurring in the following grammar.
+
+ %token NUMBER
+    
+%%
+
+expr:
+    number
+|
+    expr '+' expr
+|
+    expr '-' expr
+;
+
+number:
+    NUMBER
+;
+
+1. Explain why the following grammar has conflicts
+
+    > There are two production rules for producing non-terminal NUMBER.
+    Hence, the parser conflicts on reducing NUMBER either to `expr' (expr ::= NUMBER)
+    or to `number' (number ::= NUMBER).
+
+2. solve the conflicts so that the repaired grammar accepts expressions consisting 
+of numbers, addition and subtraction operators.
+
+    > Drop the rule `expr ::= NUMBER', and have only one rule `number ::= NUMBER' to reduce
+    upon, if we want to keep the `number ::= NUMBER' rule.
+    or, we can directly put rule `expr ::= NUMBER' and get rid of non-terminal `number'
+
+3. the parser generator `solves' the conflicts for you.
+Submit a (second) grammar explicitly showing how the conflicts are solved in the way 
+the parser generator solves them.
+
+    > parser suggests removal of rule #5 (number ::= NUMBER) and 
+    keeping rule #1 (expr ::= NUMBER), thus having only one reduction rule.
+    The fixed grammar is at "./parser/grammar"

@@ -1,0 +1,20 @@
+# This file is used by icmbuild(1) and should contain the names of all
+# 1-level deep sub-directories containing sources to compile. Each directory
+# should be specified on a line of its own. Initial blanks are ok. 
+
+# If a parser or scanner is used, (see icmconf's USE_PARSER and USE_SCANNER
+# defines) then those directories are automatically included (they
+# may be included here as well) 
+
+# Lines starting with # or with // are ignored, as are empty lines.
+
+# Sources in the current directory (i.e., the directory containing CLASSES) 
+# are also compiled, but should be avoided unless the MAIN directive is
+# specified in the icmconf file.
+
+# Class dependencies are handled by icm_dep, called from icmake using option
+# -d (enter   icmake -d   for short usage info, or see the section on icm_dep 
+# in the icmake(1) and icmbuild(1)'s man-pages.
+
+
+

@@ -3,6 +3,13 @@
 .vscode/
 .vscode/*
 
+# binaries
+tmp/
+./tmp/
+*.o
+
+
+
 # mac os
 .DS_Store
 .DS_Store/
