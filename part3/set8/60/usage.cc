@@ -2,7 +2,7 @@
 
 namespace 
 {
-    char const info[] = R"_( [options] args
+    char const info[] = R_"( [options] args
 Where:
    [options] - optional arguments (short options between parentheses):
       --help (-h)    - provide this help

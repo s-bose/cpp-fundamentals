@@ -1,0 +1,13 @@
+%filenames scanner
+
+%interactive
+//%debug
+
+%%
+
+[ \t]+                          // Often used: skip white space
+[0-9]+                          return Tokens::NR;
+!=                              return Tokens::NEQUAL;
+[+\-*\^()]                      return matched().front();
+\n                              return '\n';
+.                               // ignore

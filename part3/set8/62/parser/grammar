@@ -1,0 +1,31 @@
+%filenames parser
+%scanner ../scanner/scanner.h
+%token-path ../scanner/tokens.h
+
+%token WORD
+
+%%
+
+
+
+line:
+    plain
+|
+    separated
+;
+
+plain:
+    plain WORD
+|
+    WORD
+;
+
+separated:
+    word_comma WORD
+;
+
+word_comma:
+    WORD ','
+|
+    separated ','
+;

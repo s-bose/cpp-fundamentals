@@ -1,0 +1,66 @@
+%filenames parser
+%scanner ../scanner/scanner.h
+%token-path ../scanner/tokens.h
+%stype int
+
+
+%baseclass-preinclude <cmath>
+
+
+%token NR
+%left '+'
+%nonassoc NEQUAL
+%left '*'
+%right '^'
+%right '-'
+
+%%
+
+input:
+    // empty
+|
+    input line
+;
+
+line:
+    '\n'
+|
+    expr '\n'
+    {
+        std::cout << '\t' << $1 << std::endl;
+    }
+;
+
+expr:
+    NR
+|
+    '-' expr
+    {
+        $$ = -$2;
+    }
+|
+    expr '+' expr
+    {
+        $$ = $1 + $3;
+    }
+|
+    expr '*' expr
+    {
+        $$ = $1 * $3;
+    }
+|
+    expr '^' expr
+    {
+        $$ = pow($1, $3);
+    }
+|
+    expr NEQUAL expr
+    {
+        $$ = $1 != $3;
+    }
+|
+    '(' expr ')'
+    {
+        $$ = $2;
+    }
+;

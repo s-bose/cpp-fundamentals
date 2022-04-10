@@ -1,0 +1,6 @@
+Exercise 62:
+
+learn to repair a defective grammar.
+In the slides the wordlist grammar having one R/R conflict was discussed.
+1. Repair the orgininal grammar:
+
