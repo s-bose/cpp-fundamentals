@@ -1,12 +1,8 @@
 %filenames parser
-%scanner ../scanner/scanner.h
-%token-path ../scanner/tokens.h
 
 %token WORD
 
 %%
-
-
 
 line:
     plain
