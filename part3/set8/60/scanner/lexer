@@ -5,7 +5,7 @@
 
 %%
 
-[ \t]+                          // Often used: skip white space
+[ \t]+                          // skip white space
 [0-9]+                          return Tokens::NR;
 !=                              return Tokens::NEQUAL;
 [+\-*\^()]                      return matched().front();

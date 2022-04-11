@@ -25,7 +25,7 @@ input:
 line:
     '\n'
 |
-    expr '\n'
+    expr '\n'   // eval expr and print
     {
         std::cout << '\t' << $1 << std::endl; 
     }
