@@ -1,12 +1,7 @@
-#include "main.ih"
+#include "parser/parser.h"
 
-int main(int argc, char **argv)
-try
+int main()
 {
     Parser parser;
     parser.parse();
-}
-catch (...)
-{
-    return 1;
 }

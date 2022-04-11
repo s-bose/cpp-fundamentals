@@ -1,0 +1,26 @@
+%filenames parser
+
+%token VAR
+%token NR
+%left '+'
+%left '*'
+
+%right '-'
+
+%%
+
+expr:
+    NR
+|
+    VAR
+|
+    '-' expr
+|
+    expr '+' expr
+|
+    expr '*' expr
+|
+    expr '[' expr ']'
+;
+
+

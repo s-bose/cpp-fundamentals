@@ -7,6 +7,8 @@ learn to solve conflicts occurring in the following grammar.
 %%
 
 expr:
+    NUMBER
+|
     number
 |
     expr '+' expr
@@ -37,4 +39,4 @@ the parser generator solves them.
 
     > parser suggests removal of rule #5 (number ::= NUMBER) and 
     keeping rule #1 (expr ::= NUMBER), thus having only one reduction rule.
-    The fixed grammar is at "./parser/grammar"
+    The fixed grammar is at "parser/grammar"

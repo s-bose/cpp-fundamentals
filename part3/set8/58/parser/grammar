@@ -15,7 +15,6 @@
 %right '$'      // unary sqrt
 
 %%
-//  Define the start-rule below (the name `startrule' may be altered)
 
 input:
     // empty

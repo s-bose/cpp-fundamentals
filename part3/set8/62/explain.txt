@@ -4,3 +4,49 @@ learn to repair a defective grammar.
 In the slides the wordlist grammar having one R/R conflict was discussed.
 1. Repair the orgininal grammar:
 
+%% 
+
+input:
+|
+    // empty
+|
+    input line
+;
+
+line:
+    plain
+|
+    separated
+;
+
+plain:
+    plain WORD
+|
+    WORD
+;
+
+separated:
+    word_comma WORD
+;
+
+word_comma:
+    WORD ','
+|
+    separated ','
+;
+
+2. show what must be altered to make even that initial word optional.
+
+there can be an additional empty production rule for `line'
+i.e.
+
+line:
+    plain
+|
+    separated
+|
+    // empty
+;
+
+to make the initial word optional. Further words can be introduced by either
+the `plain' or `separated' rule from the recursion of `input ::= input line'.

@@ -1,13 +1,14 @@
 %filenames scanner
 
-//%interactive
+%interactive
 //%debug
 
 %%
 
+[ \t]+                          // Often used: skip white space
 write                      return Tokens::WRITE;
 [a-zA-Z][a-zA-Z0-9_]*      return Tokens::IDENT;
 [0-9]+                     return Tokens::NUMBER;
-[(),;]                      return matched().front();
-.|\n                       // pass
-
+[(),;]                     return matched().front();
+\n                         return '\n';
+.                          // pass

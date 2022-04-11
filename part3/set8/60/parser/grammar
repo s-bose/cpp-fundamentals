@@ -8,10 +8,10 @@
 
 
 %token NR
+%nonassoc NEQUAL    // op != has lower prec than '+'
 %left '+'
-%nonassoc NEQUAL
 %left '*'
-%right '^'
+%right '^'          //  '*' < '^' < '-'
 %right '-'
 
 %%

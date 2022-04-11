@@ -1,0 +1,3 @@
+Exercise 60:
+
+learn to add a new priority level to a grammar.
