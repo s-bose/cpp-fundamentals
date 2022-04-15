@@ -1,0 +1,106 @@
+%class-name Parser
+
+%filenames parser
+%parsefun-source parse.cc
+
+%baseclass-preinclude rulevalue.h
+%stype RuleValue
+
+%scanner ../scanner/scanner.h
+%token-path ../scanner/tokens.h
+
+%token  NUMBER
+        IDENT
+        TERMINATE
+        LIST
+
+%right  '='
+%left   '+' '-'
+%right  uMinus
+
+// %debug
+
+%%
+
+lines:
+    lines line
+|
+    line
+;
+
+
+line:
+    expr '\n'
+    {
+        display($1);
+    }
+|
+    error '\n'    
+    {
+        prompt();
+    }
+|
+    '\n'
+    {
+        prompt();
+    }
+|
+    terminate '\n'
+    {
+        ABORT();
+    }
+|
+    list '\n'
+    {
+        showList();
+        prompt();
+    }
+;
+
+terminate:
+    TERMINATE
+;
+
+list:
+    LIST
+;
+
+
+expr:
+    NUMBER
+    {
+        $$ = value();
+    }
+|
+    IDENT
+    {
+        $$ = variable();
+    }
+|
+    '-' expr            %prec uMinus
+    {
+        $$ = negate($2);
+    }
+|
+    expr '+' expr
+    {
+        $$ = add($1, $3);
+    }    
+|
+    expr '-' expr
+    {
+        $$ = sub($1, $3);
+
+    }    
+|
+    '(' expr ')'
+    {
+        $$ = $2;
+    }
+|
+    expr '=' expr
+    {
+        $$ = assign($1, $3);
+    }
+;
+

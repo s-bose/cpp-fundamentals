@@ -1,0 +1,22 @@
+%filenames scanner
+%interactive
+
+digits      [0-9]+
+optdigits   [0-9]*
+exp         [eE][-+]?{digits}
+
+%%
+
+[ \t]+
+
+{digits}                                |
+{digits}"."{optdigits}{exp}?            |
+{optdigits}"."{digits}{exp}?            return Tokens::NUMBER;
+
+exit|quit                               return Tokens::TERMINATE;
+
+list                                    return Tokens::LIST;
+
+[[:alpha:]_][[:alnum:]_]*               return Tokens::IDENT;
+
+\n|.                                    return matched()[0];
