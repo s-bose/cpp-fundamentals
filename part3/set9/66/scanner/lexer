@@ -1,0 +1,16 @@
+%filenames scanner
+%interactive
+
+digits      [0-9]+
+optdigits   [0-9]*
+exp         [eE][-+]?{digits}
+
+%%
+
+[ \t]+
+
+{digits}                                return Tokens::NUMBER;
+
+[\(\)]                                  // ignore brackets
+
+\n|.                                    return matched()[0];

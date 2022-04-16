@@ -1,0 +1,4 @@
+Exercise 67:
+
+Convert a union-semantic value type to a semantic value defined as a polymorphic base class.
+

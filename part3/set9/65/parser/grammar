@@ -11,14 +11,12 @@
 
 %token  NUMBER
         IDENT
-        OP_LOGIC
-        OP_SHIFT
 
 
 %right  '=' OP_ASSIGN
 %left   OP_LOGIC
 %left   '^' '|' '&'
-%left   '<' '>' 
+%left   '<' '>'
 %left   OP_SHIFT
 %left   '+' '-'
 %left   '*' '/' '%'

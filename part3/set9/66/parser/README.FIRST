@@ -1,0 +1,5 @@
+Do NOT throw away parser.h, parser.ih and parser.h: they contain declarations
+of additional members, headers and namespaces.
+
+If you want to run bisonc++ from scratch, save the original parser.h and
+parser.ih first, so you can easily add the required declarations afterwards.

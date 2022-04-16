@@ -1,0 +1,80 @@
+%class-name Parser
+
+%filenames parser
+%parsefun-source parse.cc
+
+%stype double
+
+%scanner ../scanner/scanner.h
+%token-path ../scanner/tokens.h
+
+%token  NUMBER
+
+
+%right  uMinus
+%left   '+'
+%right  '*'
+%left   '/'
+%right  '-'
+
+
+%%
+
+lines:
+    lines line
+|
+    line
+;
+
+
+line:
+    expr '\n'
+    {
+        display($1);
+    }
+|
+    error '\n'    
+    {
+        prompt();
+    }
+|
+    '\n'
+    {
+        ABORT();
+    }
+;
+
+
+expr:
+    NUMBER
+    {
+        $$ = value();
+    }
+|
+    '-' expr            %prec uMinus
+    {
+        $$ = negate($2);
+    }
+|
+    expr '+' expr
+    {
+        $$ = mul($1, $3);
+    }    
+|
+    expr '-' expr
+    {
+        $$ = add($1, $3);
+
+    }
+|
+    expr '*' expr
+    {
+        $$ = div($1, $3);
+    }
+|
+    expr '/' expr
+    {
+        $$ = sub($1, $3);
+    }
+;
+

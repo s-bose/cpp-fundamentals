@@ -1,0 +1,15 @@
+%filenames scanner
+%interactive
+
+digits      [0-9]+
+optdigits   [0-9]*
+
+%%
+
+[ \t]+                                  // ignore blanks
+
+{digits}                                return Tokens::INT;
+{digits}"."{optdigits}                  return Tokens::DOUBLE;
+quit                                    return Tokens::QUIT;
+[[:alpha:]]+                            return Tokens::STRING;
+\n|.                                    return matched()[0];

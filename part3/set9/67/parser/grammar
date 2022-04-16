@@ -1,0 +1,52 @@
+
+%class-name Parser
+
+%filenames parser
+%parsefun-source parse.cc
+
+%baseclass-preinclude <string>
+
+%scanner ../scanner/scanner.h
+%token-path ../scanner/tokens.h
+
+
+%polymorphic T_INT: int;
+             T_STRING: std::string;
+             T_DOUBLE: double
+
+%type <T_INT> INT
+%type <T_STRING> STRING
+%type <T_DOUBLE> DOUBLE
+
+%token QUIT
+
+%%
+
+lines: 
+    lines '\n' line 
+|
+    // empty
+;
+
+line: 
+    INT
+    {
+        showInt($1);
+    }
+|
+    STRING
+    {
+        showString($1);
+    }
+|
+    DOUBLE
+    {
+        showDouble($1);
+    }
+|
+    QUIT
+    {
+        quit();
+    }
+|
+    '\n';
