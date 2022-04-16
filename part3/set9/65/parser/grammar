@@ -1,0 +1,149 @@
+%class-name Parser
+
+%filenames parser
+%parsefun-source parse.cc
+
+%baseclass-preinclude rulevalue.h
+%stype RuleValue
+
+%scanner ../scanner/scanner.h
+%token-path ../scanner/tokens.h
+
+%token  NUMBER
+        IDENT
+        OP_LOGIC
+        OP_SHIFT
+
+
+%right  '=' OP_ASSIGN
+%left   OP_LOGIC
+%left   '^' '|' '&'
+%left   '<' '>' 
+%left   OP_SHIFT
+%left   '+' '-'
+%left   '*' '/' '%'
+
+%right  uMinus
+
+// %debug
+
+%%
+
+lines:
+    lines line
+|
+    line
+;
+
+
+line:
+    expr '\n'
+    {
+        display($1);
+    }
+|
+    error '\n'    
+    {
+        prompt();
+    }
+|
+    '\n'
+    {
+        prompt();
+    }
+;
+
+
+expr:
+    NUMBER
+    {
+        $$ = value();
+    }
+|
+    IDENT
+    {
+        $$ = variable();
+    }
+|
+    '-' expr            %prec uMinus
+    {
+        $$ = negate($2);
+    }
+|
+    expr '^' expr                   // bitwise
+    {
+        opXor($1, $3);
+    }
+|
+    expr '|' expr
+    {
+        opOr($1, $3);
+    }
+|
+    expr '&' expr
+    {
+        opAnd($1, $3);
+    }
+|
+    expr '<' expr                   // comparison
+    {
+        OpLesser($1, $3);
+    }
+|
+    expr '>' expr
+    {
+        opGreater($1, $3);
+    }
+|
+    expr '+' expr                   // arithmetic
+    {
+        $$ = opAdd($1, $3);
+    }    
+|
+    expr '-' expr
+    {
+        $$ = opSub($1, $3);
+
+    }
+|
+    expr '*' expr
+    {
+        $$ = opMul($1, $3);
+    }
+|
+    expr '/' expr
+    {
+        $$ = opDiv($1, $3);
+    }
+|
+    expr '%' expr
+    {
+        $$ = opMod($1, $3);
+    }
+|
+    '(' expr ')'
+    {
+        $$ = $2;
+    }
+|
+    expr '=' expr
+    {
+        $$ = opAssign($1, $3);
+    }
+|
+    expr OP_ASSIGN expr                 // "+= , -=, &=, ..."
+    {
+        $$ = opAssignOthr($2, $1, $3);
+    }
+|
+    expr OP_LOGIC expr                  // "||, &&"
+    {
+        $$ = opLogic($2, $1, $3);
+    }
+|  
+    expr OP_SHIFT expr                  // "<<, >>"
+    {
+        $$ = opShift($2, $1, $3);
+    }
+;
+
