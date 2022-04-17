@@ -1,9 +1,7 @@
 #include "../parser.ih"
 
-RuleValue Parser::opGreater(RuleValue &lvalue, RuleValue &rvalue) const
+RuleValue Parser::opGreater(RuleValue &lvalue, RuleValue &rvalue)
 {
-    lvalue.d_number = int_(lvalue) > int_(rvalue);
-    lvalue.d_type = RuleValue::VALUE;
-
-    return move(lvalue);
+    double res = (valueOf(lvalue) > valueOf(rvalue));
+    return RuleValue(res);
 }

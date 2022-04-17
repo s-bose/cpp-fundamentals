@@ -4,6 +4,7 @@
 %parsefun-source parse.cc
 
 %baseclass-preinclude rulevalue.h
+
 %stype RuleValue
 
 %scanner ../scanner/scanner.h
@@ -11,7 +12,7 @@
 
 %token  NUMBER
         IDENT
-
+        LIST
 
 %right  '=' OP_ASSIGN
 %left   OP_LOGIC
@@ -49,6 +50,12 @@ line:
     {
         prompt();
     }
+|
+    LIST '\n'
+    {
+        showList();
+        prompt();
+    }
 ;
 
 
@@ -70,27 +77,27 @@ expr:
 |
     expr '^' expr                   // bitwise
     {
-        opXor($1, $3);
+        $$ = opXor($1, $3);
     }
 |
     expr '|' expr
     {
-        opOr($1, $3);
+        $$ = opOr($1, $3);
     }
 |
     expr '&' expr
     {
-        opAnd($1, $3);
+        $$ = opAnd($1, $3);
     }
 |
     expr '<' expr                   // comparison
     {
-        OpLesser($1, $3);
+        $$ = opLesser($1, $3);
     }
 |
     expr '>' expr
     {
-        opGreater($1, $3);
+        $$ = opGreater($1, $3);
     }
 |
     expr '+' expr                   // arithmetic
@@ -131,7 +138,7 @@ expr:
 |
     expr OP_ASSIGN expr                 // "+= , -=, &=, ..."
     {
-        $$ = opAssignOthr($2, $1, $3);
+        $$ = opAssignOthr($1, $3);
     }
 |
     expr OP_LOGIC expr                  // "||, &&"

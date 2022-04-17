@@ -1,9 +1,8 @@
 #include "../parser.ih"
 
-RuleValue Parser::opXor(RuleValue &lvalue, RuleValue &rvalue) const
+RuleValue Parser::opXor(RuleValue &lvalue, RuleValue &rvalue)
 {
-    lvalue.d_number = int_(lvalue) ^ int_(rvalue);
-    lvalue.d_type = RuleValue::VALUE;
-
-    return move(lvalue);
+    double res = (int_(lvalue) ^ int_(rvalue));
+    cout << res << endl;
+    return RuleValue(res);
 }

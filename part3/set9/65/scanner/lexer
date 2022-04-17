@@ -12,7 +12,7 @@ exp         [eE][-+]?{digits}
 {digits}                                 |
 {digits}"."{optdigits}{exp}?             |
 {optdigits}"."{digits}{exp}?          return Tokens::NUMBER;
-
+list                                  return Tokens::LIST;
 
 "+="                                     |
 "-="                                     |
@@ -25,21 +25,12 @@ exp         [eE][-+]?{digits}
 "=="                                     |
 "!="                                     |
 "<="                                     |
-">="                                   return Tokens::OP_ASSIGN;
-// return s_symbols[matched()[0]];
+">="                                     |
+"<<="                                    |
+">>="                                 return opAssign(matched());
 
-"||"|"&&"                             return Tokens::OP_LOGIC;
+"||"|"&&"|"<<"|">>"                   return opLogicShift(matched());
 
-"<<"|">>"                             return Tokens::OP_SHIFT;
-// return opLogicShift(matched()[0]);
+[[:alpha:]_][[:alnum:]_]*             return Tokens::IDENT;
 
-
-"<<="                                   |
-">>="                                 return Tokens::OP_ASSIGN;
-// return Tokens::OpAssign_::SHLEQ;
-
-// return Tokens::OpAssign_::SHREQ;
-
-[[:alpha:]_][[:alnum:]_]*              return Tokens::IDENT;
-
-\n|.                                   return matched()[0];
+\n|.                                  return matched()[0];

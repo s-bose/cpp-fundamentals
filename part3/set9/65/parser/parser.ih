@@ -4,16 +4,14 @@
 
 // $insert class.h
 #include "parser.h"
+#include "../scanner/scanner.h"
 
 #include <iostream>
 #include <algorithm>
 #include <iterator>
 
 // $insert lex
-inline int Parser::lex()
-{
-    return d_scanner.lex();
-}
+
 
 inline void Parser::print()         
 {

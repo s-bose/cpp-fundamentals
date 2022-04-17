@@ -41,12 +41,15 @@ class Parser: public ParserBase
         void nextToken_();
         void print_();
 
+    // processing multi-char operators
+
     // added functions for the calculator:
 
         void display(RuleValue &expr);
         void done();
         void prompt();
-
+        void showList();
+        
         RuleValue negate(RuleValue &expr) const;
         RuleValue value();
         RuleValue variable();
@@ -57,29 +60,42 @@ class Parser: public ParserBase
         int int_(RuleValue &expr) const;
         // std::pair<std::string, unsigned> &symbol(size_t idx) const;
 
-    // operators
-        RuleValue opAdd(RuleValue &lvalue, RuleValue &rvalue) const;
-        RuleValue opSub(RuleValue &lvalue, RuleValue &rvalue) const;
-        RuleValue opMul(RuleValue &lvalue, RuleValue &rvalue) const;
-        RuleValue opDiv(RuleValue &lvalue, RuleValue &rvalue) const;
-        RuleValue opMod(RuleValue &lvalue, RuleValue &rvalue) const;
+    // binary operators
+        RuleValue opAdd(RuleValue &lvalue, RuleValue &rvalue);
+        RuleValue opSub(RuleValue &lvalue, RuleValue &rvalue);
+        RuleValue opMul(RuleValue &lvalue, RuleValue &rvalue);
+        RuleValue opDiv(RuleValue &lvalue, RuleValue &rvalue);
+        RuleValue opMod(RuleValue &lvalue, RuleValue &rvalue);
+        RuleValue opXor(RuleValue &lvalue, RuleValue &rvalue);
+        RuleValue opOr(RuleValue &lvalue, RuleValue &rvalue);
+        RuleValue opAnd(RuleValue &lvalue, RuleValue &rvalue);
+        RuleValue opLesser(RuleValue &lvalue, RuleValue &rvalue);
+        RuleValue opGreater(RuleValue &lvalue, RuleValue &rvalue);
+    
+    // op-assignment
+        RuleValue opEq(RuleValue &lvalue, RuleValue &rvalue);       // ==
+        RuleValue opNeq(RuleValue &lvalue, RuleValue &rvalue);      // !=
+        RuleValue opLeq(RuleValue &lvalue, RuleValue &rvalue);      // <=
+        RuleValue opGeq(RuleValue &lvalue, RuleValue &rvalue);      // >=    
+        RuleValue opLShiftEq(RuleValue &lvalue, RuleValue &rvalue); // <<=
+        RuleValue opRShiftEq(RuleValue &lvalue, RuleValue &rvalue); // >>=
 
-        RuleValue opXor(RuleValue &lvalue, RuleValue &rvalue) const;
-        RuleValue opOr(RuleValue &lvalue, RuleValue &rvalue) const;
-        RuleValue opAnd(RuleValue &lvalue, RuleValue &rvalue) const;
-        RuleValue opLesser(RuleValue &lvalue, RuleValue &rvalue) const;
-        RuleValue opGreater(RuleValue &lvalue, RuleValue &rvalue) const;
-
+    // assignment
         RuleValue &opAssign(RuleValue &lvalue, RuleValue &rvalue);
+        RuleValue &opAssignOthr(RuleValue &lvalue, RuleValue &rvalue);
+    // logical
+        RuleValue opLogic(RuleValue &op,
+                           RuleValue &lvalue, RuleValue &rvalue);
+    // shift    
+        RuleValue opShift(RuleValue &op,
+                           RuleValue &lvalue, RuleValue &rvalue);
+    
+    // assignment op func array
+        static RuleValue (Parser::*s_opFunc[])(RuleValue &lvalue, 
+                                              RuleValue &rvalue);
 
-        RuleValue &opAssignOthr(RuleValue &op, 
-                             RuleValue &lvalue, RuleValue &rvalue) const;
-
-        RuleValue &opLogic(RuleValue &op,
-                           RuleValue &lvalue, RuleValue &rvalue) const;
-                           
-        RuleValue &opShift(RuleValue &op,
-                           RuleValue &lvalue, RuleValue &rvalue) const;
+    // logical op func array
+    
 };
 
 inline int Parser::int_(RuleValue &expr) const

@@ -10,13 +10,16 @@
 // $insert classHead
 class Scanner: public ScannerBase
 {
-    static std::unordered_map<char, int> s_symbols;
+    std::string d_operator;
 
     public:
+        static std::unordered_map<std::string, int> s_symbols;
+
         explicit Scanner(std::istream &in = std::cin, std::ostream &out = std::cout);
         
         // $insert lexFunctionDecl
         int lex();
+        double getCurrOp();
 
     private:
         int lex_();
@@ -29,7 +32,8 @@ class Scanner: public ScannerBase
         void postCode(PostEnum_ type);    
                             // re-implement this function for code that must 
                             // be exec'ed after the rules's actions.
-        
+        int opAssign(std::string const &str);
+        int opLogicShift(std::string const &str);
 };
 
 // $insert scannerConstructors
