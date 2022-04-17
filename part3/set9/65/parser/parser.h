@@ -44,7 +44,7 @@ class Parser: public ParserBase
     // processing multi-char operators
 
     // added functions for the calculator:
-
+    // utils
         void display(RuleValue &expr);
         void done();
         void prompt();
@@ -58,7 +58,6 @@ class Parser: public ParserBase
     
     // additional utility functions
         int int_(RuleValue &expr) const;
-        // std::pair<std::string, unsigned> &symbol(size_t idx) const;
 
     // binary operators
         RuleValue opAdd(RuleValue &lvalue, RuleValue &rvalue);
@@ -72,23 +71,27 @@ class Parser: public ParserBase
         RuleValue opLesser(RuleValue &lvalue, RuleValue &rvalue);
         RuleValue opGreater(RuleValue &lvalue, RuleValue &rvalue);
     
-    // op-assignment
+    // op-comparison
         RuleValue opEq(RuleValue &lvalue, RuleValue &rvalue);       // ==
         RuleValue opNeq(RuleValue &lvalue, RuleValue &rvalue);      // !=
         RuleValue opLeq(RuleValue &lvalue, RuleValue &rvalue);      // <=
-        RuleValue opGeq(RuleValue &lvalue, RuleValue &rvalue);      // >=    
+        RuleValue opGeq(RuleValue &lvalue, RuleValue &rvalue);      // >=
+
+    // shift assignment    
         RuleValue opLShiftEq(RuleValue &lvalue, RuleValue &rvalue); // <<=
         RuleValue opRShiftEq(RuleValue &lvalue, RuleValue &rvalue); // >>=
 
     // assignment
         RuleValue &opAssign(RuleValue &lvalue, RuleValue &rvalue);
         RuleValue &opAssignOthr(RuleValue &lvalue, RuleValue &rvalue);
+
+    // comparison
+        RuleValue opComp(RuleValue &lvalue, RuleValue &rvalue);
+    
     // logical
-        RuleValue opLogic(RuleValue &op,
-                           RuleValue &lvalue, RuleValue &rvalue);
+        RuleValue opLogic(RuleValue &lvalue, RuleValue &rvalue);
     // shift    
-        RuleValue opShift(RuleValue &op,
-                           RuleValue &lvalue, RuleValue &rvalue);
+        RuleValue opShift(RuleValue &lvalue, RuleValue &rvalue);
     
     // assignment op func array
         static RuleValue (Parser::*s_opFunc[])(RuleValue &lvalue, 

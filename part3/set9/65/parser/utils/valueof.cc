@@ -1,4 +1,4 @@
-#include "parser.ih"
+#include "../parser.ih"
 
 double Parser::valueOf(RuleValue const &expr) const
 {

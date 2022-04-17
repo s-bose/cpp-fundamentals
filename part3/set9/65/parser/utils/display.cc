@@ -1,4 +1,4 @@
-#include "parser.ih"
+#include "../parser.ih"
 
 void Parser::display(RuleValue &expr)
 {

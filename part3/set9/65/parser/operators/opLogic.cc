@@ -1,13 +1,14 @@
 #include "../parser.ih"
 
-RuleValue Parser::opLogic(RuleValue &op,
-                   RuleValue &lvalue, RuleValue &rvalue)
+RuleValue Parser::opLogic(RuleValue &lvalue, RuleValue &rvalue)
 {
-    if (int_(op) == Tokens::OpLogic_::L_AND)
-        lvalue.d_number = (int_(lvalue) && int_(rvalue));
-    else
-        lvalue.d_number = (int_(lvalue) || int_(rvalue));
+    int token = d_scanner.getCurrOp();
 
-    lvalue.d_type = RuleValue::VALUE;
-    return move(lvalue);
+    double res;
+    if (token == Tokens::L_AND)
+        res = (int_(lvalue) && int_(rvalue));
+    else
+        res = (int_(lvalue) || int_(rvalue));
+
+    return RuleValue(res);
 }

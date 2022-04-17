@@ -14,6 +14,12 @@ exp         [eE][-+]?{digits}
 {optdigits}"."{digits}{exp}?          return Tokens::NUMBER;
 list                                  return Tokens::LIST;
 
+
+"=="                                     |
+"!="                                     |
+"<="                                     |
+">="                                  return opComp(matched());
+
 "+="                                     |
 "-="                                     |
 "*="                                     |
@@ -22,12 +28,9 @@ list                                  return Tokens::LIST;
 "&="                                     |
 "|="                                     |
 "^="                                     |
-"=="                                     |
-"!="                                     |
-"<="                                     |
-">="                                     |
 "<<="                                    |
 ">>="                                 return opAssign(matched());
+
 
 "||"|"&&"|"<<"|">>"                   return opLogicShift(matched());
 

@@ -1,4 +1,4 @@
-#include "parser.ih"
+#include "../parser.ih"
 
 RuleValue Parser::value()
 {

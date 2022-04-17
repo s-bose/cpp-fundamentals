@@ -33,6 +33,7 @@ class Scanner: public ScannerBase
                             // re-implement this function for code that must 
                             // be exec'ed after the rules's actions.
         int opAssign(std::string const &str);
+        int opComp(std::string const &str);
         int opLogicShift(std::string const &str);
 };
 

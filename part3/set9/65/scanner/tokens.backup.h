@@ -11,6 +11,7 @@ struct Tokens
         LIST,
         OP_ASSIGN,
         OP_LOGIC,
+        OP_COMP,
         OP_SHIFT,
         uMinus,
     };
@@ -25,17 +26,21 @@ struct Tokens
         AND,
         OR,
         XOR,
-        EQ,
-        NEQ,
-        LEQ,
-        GEQ,
         SHL,
         SHR,
     };
 
+    enum OpComp_
+    {
+        EQ = 310,
+        NEQ,
+        LEQ,
+        GEQ,
+    };
+
     enum OpLogic_
     {
-        L_OR = 400,
+        L_OR = 320,
         L_AND,
     };
 };
