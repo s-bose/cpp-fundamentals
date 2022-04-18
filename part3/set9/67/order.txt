@@ -1,5 +1,6 @@
 explain.txt
 
 parser/grammar
+parser/parser.h
+
 scanner/lexer
-scanner/scanner.h

@@ -1,3 +1,20 @@
 explain.txt
 
 parser/grammar
+parser/parser.h
+parser/operators/binary/opAdd.cc
+parser/operators/comparison/opEq.cc
+parser/operators/shift/opLShiftEq.cc
+parser/operators/opAssign.cc
+parser/operators/opAssignOther.cc
+parser/operators/opComp.cc
+parser/operators/opLogic.cc
+parser/operators/opShift.cc
+parser/utils/opFuncArr.cc
+
+scanner/lexer
+scanner/opAssign.cc
+scanner/opLogicShift.cc
+scanner/getCurrOp.cc
+scanner/symbols.cc
+scanner/tokens.h
