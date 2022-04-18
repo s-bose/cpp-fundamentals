@@ -90,15 +90,13 @@ class Parser: public ParserBase
     
     // logical
         RuleValue opLogic(RuleValue &lvalue, RuleValue &rvalue);
+    
     // shift    
         RuleValue opShift(RuleValue &lvalue, RuleValue &rvalue);
     
     // assignment op func array
         static RuleValue (Parser::*s_opFunc[])(RuleValue &lvalue, 
                                               RuleValue &rvalue);
-
-    // logical op func array
-    
 };
 
 inline int Parser::int_(RuleValue &expr) const

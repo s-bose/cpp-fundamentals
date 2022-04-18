@@ -2,8 +2,6 @@
 %interactive
 
 digits      [0-9]+
-optdigits   [0-9]*
-exp         [eE][-+]?{digits}
 
 %%
 

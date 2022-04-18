@@ -1,3 +1,10 @@
 Exercise 64:
 
 learn to expand an existing grammar with new commands.
+Add commands quit and exit to the parser's grammar, so that when these words are entered, 
+the parser stops. Also, implement list showing the alphabetically ordered list of all 
+defined variables, including their values.
+
+In order to produce a sorted list of defined variables, the internal `d_symtab' storing
+pairs of identifiers and their indices to their semantic value (vector `d_value') has
+been changed from std::unordered_map to std::map. 

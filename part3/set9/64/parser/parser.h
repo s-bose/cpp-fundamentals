@@ -18,7 +18,7 @@ class Parser: public ParserBase
     Scanner d_scanner;
 
     std::vector<double> d_value;
-    std::map<std::string, unsigned> d_symtab;   // use sorted std::map
+    std::map<std::string, unsigned> d_symtab;   // use sorted map
 
     bool d_display;
         

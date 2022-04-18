@@ -1,7 +1,5 @@
-#include <iostream>
-#include "parser/parser.h"
+#include "main.ih"
 
-using namespace std;
 
 int main(int argc, char **argv)
 try

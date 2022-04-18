@@ -1,0 +1,17 @@
+Exercise 65:
+
+learn to expand a grammar in a substantial way.
+Add all standard C++ arithmetic operators to the parser.
+
+The multichar operators are categorized into three categories, 
+OP_ASSiGN: "."= (not including below)
+OP_COMP:   ==, !=, <=, >=
+OP_LOGIC:  ||, &&
+OP_SHIFT:  <<, >>
+
+The scanner returns these generic group tokens and holds a `d_operator' 
+string holding the distinguishing part of the op to be looked up in a
+symbol table `s_symbols' to retrieve a unique token for that op.
+
+Parser processes that token to obtain an index to an array of func ptrs,
+which then executes the corresponding operation.

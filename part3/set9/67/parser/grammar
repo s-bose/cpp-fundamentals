@@ -10,23 +10,24 @@
 %token-path ../scanner/tokens.h
 
 
-%polymorphic T_INT: int;
+%polymorphic T_INT: int;                // create polymorphic types
              T_STRING: std::string;
              T_DOUBLE: double
 
-%type <T_INT> INT
-%type <T_STRING> STRING
-%type <T_DOUBLE> DOUBLE
+%token <T_INT> INT                       // token's semantic value
+%token <T_STRING> STRING                 // is of the polymorphic type
+%token <T_DOUBLE> DOUBLE
 
 %token QUIT
 
 %%
 
 lines: 
-    lines '\n' line 
+    lines '\n' line
 |
     // empty
 ;
+
 
 line: 
     INT
@@ -48,5 +49,4 @@ line:
     {
         quit();
     }
-|
-    '\n';
+;

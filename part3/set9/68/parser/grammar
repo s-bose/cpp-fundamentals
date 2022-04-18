@@ -1,0 +1,39 @@
+
+%class-name Parser
+
+%filenames parser
+%parsefun-source parse.cc
+
+%baseclass-preinclude <cmath>
+
+%scanner ../scanner/scanner.h
+%token-path ../scanner/tokens.h
+
+%token PI E
+
+
+%%
+
+lines: 
+    line '\n'
+    {
+        eval();
+    }
+|
+    '\n'
+    {
+        prompt();
+    }
+;
+
+line: 
+    PI
+    {
+        pi();
+    }
+|
+    E
+    {
+        exp();
+    }
+;
