@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# test comment for git sync: IGNORE
+
 DIR=$1;
 if [[ ! -d $DIR ]]
 then
